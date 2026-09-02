@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  ArrowDown, ArrowRight, ArrowUpRight, Check, Clock3, Coffee, Crown,
-  ExternalLink, MapPin, Menu, MessageCircle, Phone, Play, Sparkles,
-  Target, Tv, X,
+  ArrowDown, ArrowUpRight, Clock3, ExternalLink, MapPin, Menu,
+  MessageCircle, Phone, X,
 } from 'lucide-react';
 import './styles.css';
 
@@ -69,11 +68,13 @@ function App() {
         <a className="scroll-hint" href="#club" aria-label="Листать к информации о клубе"><ArrowDown /></a>
       </section>
 
-      <section id="club" className="quick-facts shell" aria-label="Клуб в цифрах">
-        <div><strong>7</strong><span>столов русского<br />бильярда</span></div>
-        <div><strong>2</strong><span>VIP-стола<br />русской пирамиды</span></div>
-        <div><strong>2</strong><span>стола<br />американского пула</span></div>
-        <div><strong>04:00</strong><span>играем<br />каждый день</span></div>
+      <section id="club" className="facts-zone" aria-label="Клуб в цифрах">
+        <div className="quick-facts shell">
+          <div><strong>7</strong><span>столов русского<br />бильярда</span></div>
+          <div><strong>2</strong><span>VIP-стола<br />русской пирамиды</span></div>
+          <div><strong>2</strong><span>стола<br />американского пула</span></div>
+          <div><strong>04:00</strong><span>играем<br />каждый день</span></div>
+        </div>
       </section>
 
       <section className="about section-pad shell">
@@ -82,14 +83,13 @@ function App() {
           <h2>Здесь остаются только<br /><em>игроки и момент</em></h2>
           <p className="section-lead">Спокойный вечер с друзьями, серьёзная партия или первый знакомый удар — в клубе есть место для любого темпа.</p>
           <div className="feature-list">
-            <div><Target /><span><b>Профессиональные столы</b><small>Русская пирамида и американский пул</small></span></div>
-            <div><Tv /><span><b>Большая TV-зона</b><small>Спортивные трансляции на большом экране</small></span></div>
-            <div><Coffee /><span><b>Бар и кофе</b><small>Всё для длинной партии и хорошей компании</small></span></div>
+            <div><b>Профессиональные столы</b><small>Русская пирамида и американский пул</small></div>
+            <div><b>Большая TV-зона</b><small>Спортивные трансляции на большом экране</small></div>
+            <div><b>Бар и кофе</b><small>Всё для длинной партии и хорошей компании</small></div>
           </div>
         </div>
         <div className="about-image-wrap">
           <img src={`${base}images/5b9a7b96f61933d39bd79a5c_7.jpg`} alt="Шары для русской пирамиды на зелёном сукне" />
-          <div className="image-note"><Sparkles /><span>Атмосфера, в которую<br />хочется возвращаться</span></div>
         </div>
       </section>
 
@@ -101,25 +101,21 @@ function App() {
           </div>
 
           <div className="price-grid">
-            <article className="price-card price-card-featured">
-              <div className="price-card-head"><span className="game-icon"><Target /></span><span className="pill">Популярный выбор</span></div>
+            <a className="price-card price-card-featured" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Забронировать стол для русской пирамиды">
               <div><p className="price-label">Русская пирамида</p><h3>500 <small>₽ / час</small></h3><p className="price-caption">Вторник — воскресенье</p></div>
-              <ul><li><Check /> 7 профессиональных столов</li><li><Check /> VIP-стол — 550 ₽ / час</li><li><Check /> Понедельник — 300 ₽ / час</li></ul>
-              <a href={whatsappHref} target="_blank" rel="noreferrer">Забронировать <ArrowRight /></a>
-            </article>
+              <ul><li>7 профессиональных столов</li><li>VIP-стол — 550 ₽ / час</li><li>Понедельник — 300 ₽ / час</li></ul>
+            </a>
 
-            <article className="price-card">
-              <div className="price-card-head"><span className="game-icon"><Play /></span><span className="pill pill-muted">9 футов</span></div>
+            <a className="price-card" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Забронировать стол для американского пула">
               <div><p className="price-label">Американский пул</p><h3>450 <small>₽ / час</small></h3><p className="price-caption">Вторник — воскресенье</p></div>
-              <ul><li><Check /> 2 стола для пула</li><li><Check /> Подходит для компании</li><li><Check /> Понедельник — 300 ₽ / час</li></ul>
-              <a href={whatsappHref} target="_blank" rel="noreferrer">Забронировать <ArrowRight /></a>
-            </article>
+              <ul><li>2 стола для пула</li><li>Подходит для компании</li><li>Понедельник — 300 ₽ / час</li></ul>
+            </a>
 
-            <aside className="monday-card">
-              <Crown /><p>Каждый понедельник</p><strong>300 ₽</strong>
+            <a className="monday-card" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Забронировать стол по цене понедельника">
+              <p>Каждый понедельник</p><strong>300 ₽</strong>
               <span>за час игры<br />на любом обычном столе</span>
-              <a href={phoneHref}>Уточнить свободное время <ArrowUpRight /></a>
-            </aside>
+              <small>Нажмите, чтобы уточнить свободное время</small>
+            </a>
           </div>
         </div>
       </section>
@@ -139,11 +135,13 @@ function App() {
         </div>
       </section>
 
-      <section className="booking-banner shell">
-        <div><p className="section-kicker">Стол свободен</p><h2>Осталось выбрать <em>время</em></h2></div>
-        <div className="booking-actions">
-          <a className="button button-primary" href={whatsappHref} target="_blank" rel="noreferrer"><MessageCircle /> Написать в WhatsApp</a>
-          <a className="button button-outline-dark" href={phoneHref}><Phone /> Позвонить</a>
+      <section className="booking-zone">
+        <div className="booking-banner shell">
+          <div><p className="section-kicker">Стол свободен</p><h2>Осталось выбрать <em>время</em></h2></div>
+          <div className="booking-actions">
+            <a className="button button-primary" href={whatsappHref} target="_blank" rel="noreferrer"><MessageCircle /> Написать в WhatsApp</a>
+            <a className="button button-outline-dark" href={phoneHref}><Phone /> Позвонить</a>
+          </div>
         </div>
       </section>
 
