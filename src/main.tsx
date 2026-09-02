@@ -194,7 +194,7 @@ function App() {
 
       {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" onClick={() => setLightbox(null)}>
         <button aria-label="Закрыть фотографию"><X /></button>
-        <img src={`${base}images/${gallery[lightbox].src}`} alt={gallery[lightbox].alt} onClick={(event) => event.stopPropagation()} />
+        <img className={lightbox >= 2 ? 'lightbox-cropped' : undefined} src={`${base}images/${gallery[lightbox].src}`} alt={gallery[lightbox].alt} onClick={(event) => event.stopPropagation()} />
       </div>}
     </main>
   );
