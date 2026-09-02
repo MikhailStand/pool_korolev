@@ -112,7 +112,7 @@ function App() {
 
           <div className="price-grid">
             <a className="price-card price-card-featured" href="#booking" aria-label="Перейти к бронированию стола для русской пирамиды">
-              <div><p className="price-label">Русская пирамида</p><h3>500 <small>₽ / час</small></h3><p className="price-caption">Вторник — воскресенье</p></div>
+              <div><p className="price-label">Русский бильярд</p><h3>500 <small>₽ / час</small></h3><p className="price-caption">Вторник — воскресенье</p></div>
               <ul><li>7 профессиональных столов</li><li>VIP-стол — 550 ₽ / час</li><li>Понедельник — 300 ₽ / час</li></ul>
             </a>
 

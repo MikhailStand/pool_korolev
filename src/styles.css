@@ -95,7 +95,7 @@ h1 em { color: var(--mint); font-style: italic; }
 .price-label { margin: 0 0 14px; font-size: 20px; font-weight: 800; }
 .price-card h3 { margin: 0; font: 68px 'Prata', serif; letter-spacing: -.05em; }
 .price-card h3 small { font: 16px 'Manrope', sans-serif; color: rgba(16,21,17,.62); letter-spacing: 0; font-weight: 600; }
-.price-caption { margin: 13px 0 0; color: rgba(16,21,17,.65); font-size: 16px; font-weight: 600; }
+.price-caption { margin: 15px 0 0; color: rgba(16,21,17,.82); font-size: 19px; font-weight: 800; }
 .price-card ul { margin: 0; padding: 28px 0 0; display: grid; gap: 17px; border-top: 1px solid rgba(16,21,17,.14); list-style: none; color: rgba(16,21,17,.78); font-size: 16px; font-weight: 600; }
 .price-card li { display: flex; align-items: center; gap: 12px; }
 .price-card li::before { content: ''; flex: 0 0 18px; width: 18px; height: 2px; background: #277356; }
