@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  ArrowDown, ArrowUpRight, Clock3, ExternalLink, MapPin, Menu,
+  ArrowDown, ArrowUp, ArrowUpRight, Clock3, ExternalLink, MapPin, Menu,
   MessageCircle, Phone, X,
 } from 'lucide-react';
 import './styles.css';
@@ -45,9 +45,13 @@ function App() {
           <span className="brand-copy"><b>Мастер-Круазе</b><small>Бильярдный клуб · Королёв</small></span>
         </a>
         <nav className="desktop-nav" aria-label="Основная навигация">
-          <a href="#club">О клубе</a><a href="#prices">Цены</a><a href="#gallery">Атмосфера</a><a href="#contacts">Контакты</a>
+          <a href="#club">О клубе</a><a href="#gallery">Атмосфера</a><a href="#contacts">Контакты</a>
         </nav>
-        <a className="header-call" href={phoneHref}><Phone size={18} /> <span>{phoneLabel}</span></a>
+        <div className="header-actions" aria-label="Быстрые действия">
+          <a className="header-action header-prices" href="#prices">Цены</a>
+          <a className="header-action header-booking" href="#booking"><MessageCircle /> <span className="desktop-label">Забронировать стол</span><span className="mobile-label">Забронировать</span></a>
+          <a className="header-action header-phone" href={phoneHref}><Phone /> <span>Позвонить</span></a>
+        </div>
         <button className="menu-button" aria-label="Открыть меню" onClick={() => setMenuOpen(true)}><Menu /></button>
       </header>
 
@@ -71,10 +75,10 @@ function App() {
 
       <section id="club" className="facts-zone" aria-label="Клуб в цифрах">
         <div className="quick-facts shell">
-          <div><strong>7</strong><span>столов русского<br />бильярда</span></div>
-          <div><strong>2</strong><span>VIP-стола<br />русской пирамиды</span></div>
-          <div><strong>2</strong><span>стола<br />американского пула</span></div>
-          <div><strong>04:00</strong><span>играем<br />каждый день</span></div>
+          <div><strong>7</strong><span>столов русского бильярда</span></div>
+          <div><strong>2</strong><span>VIP-стола русской пирамиды</span></div>
+          <div><strong>2</strong><span>стола американского пула</span></div>
+          <div><strong>04:00</strong><span>играем каждый день</span></div>
         </div>
       </section>
 
@@ -102,17 +106,17 @@ function App() {
           </div>
 
           <div className="price-grid">
-            <a className="price-card price-card-featured" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Забронировать стол для русской пирамиды">
+            <a className="price-card price-card-featured" href="#booking" aria-label="Перейти к бронированию стола для русской пирамиды">
               <div><p className="price-label">Русская пирамида</p><h3>500 <small>₽ / час</small></h3><p className="price-caption">Вторник — воскресенье</p></div>
               <ul><li>7 профессиональных столов</li><li>VIP-стол — 550 ₽ / час</li><li>Понедельник — 300 ₽ / час</li></ul>
             </a>
 
-            <a className="price-card" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Забронировать стол для американского пула">
+            <a className="price-card" href="#booking" aria-label="Перейти к бронированию стола для американского пула">
               <div><p className="price-label">Американский пул</p><h3>450 <small>₽ / час</small></h3><p className="price-caption">Вторник — воскресенье</p></div>
               <ul><li>2 стола для пула</li><li>Подходит для компании</li><li>Понедельник — 300 ₽ / час</li></ul>
             </a>
 
-            <a className="monday-card" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Забронировать стол по цене понедельника">
+            <a className="monday-card" href="#booking" aria-label="Перейти к бронированию стола по цене понедельника">
               <p>Каждый понедельник</p><strong>300 ₽</strong>
               <span>за час игры<br />на любом обычном столе</span>
               <small>Нажмите, чтобы уточнить свободное время</small>
@@ -136,7 +140,7 @@ function App() {
         </div>
       </section>
 
-      <section className="booking-zone">
+      <section id="booking" className="booking-zone">
         <div className="booking-banner shell">
           <div><p className="section-kicker">Стол свободен</p><h2>Осталось выбрать <em>время</em></h2></div>
           <div className="booking-actions">
@@ -173,7 +177,8 @@ function App() {
       <footer className="footer shell">
         <a className="brand" href="#top"><span className="brand-mark">МК</span><span className="brand-copy"><b>Мастер-Круазе</b><small>Бильярдный клуб · Королёв</small></span></a>
         <p>© {new Date().getFullYear()} Бильярдный клуб «Мастер-Круазе»</p>
-        <a href={phoneHref}>{phoneLabel}</a>
+        <a className="footer-phone" href={phoneHref}>{phoneLabel}</a>
+        <a className="back-to-top" href="#top"><ArrowUp /> Наверх</a>
       </footer>
 
       <div className="mobile-booking-bar">
