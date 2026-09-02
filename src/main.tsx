@@ -23,6 +23,7 @@ const gallery = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -35,23 +36,26 @@ function App() {
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => setHeaderScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <main>
-      <header className="site-header shell">
+      <header className={`site-header shell${headerScrolled ? ' site-header-scrolled' : ''}`}>
         <a className="brand" href="#top" aria-label="Мастер-Круазе — наверх">
           <span className="brand-mark">МК</span>
           <span className="brand-copy"><b>Мастер-Круазе</b><small>Бильярдный клуб · Королёв</small></span>
         </a>
         <nav className="desktop-nav" aria-label="Основная навигация">
-          <a href="#club">О клубе</a><a href="#gallery">Атмосфера</a><a href="#contacts">Контакты</a>
+          <a href="#club">О клубе</a><a href="#prices">Цены</a><a href="#gallery">Атмосфера</a><a href="#contacts">Контакты</a>
         </nav>
-        <div className="header-actions" aria-label="Быстрые действия">
-          <a className="header-action header-prices" href="#prices">Цены</a>
-          <a className="header-action header-booking" href="#booking"><MessageCircle /> <span className="desktop-label">Забронировать стол</span><span className="mobile-label">Забронировать</span></a>
-          <a className="header-action header-phone" href={phoneHref}><Phone /> <span>Позвонить</span></a>
-        </div>
+        <a className="header-call" href={phoneHref}><Phone size={18} /> <span>{phoneLabel}</span></a>
         <button className="menu-button" aria-label="Открыть меню" onClick={() => setMenuOpen(true)}><Menu /></button>
       </header>
 
@@ -62,6 +66,7 @@ function App() {
           <h1>Вечер начинается<br />с хорошей <em>партии</em></h1>
           <p className="hero-lead">Русская пирамида и американский пул в клубе с характером. Без лишнего шума — только игра, друзья и время для себя.</p>
           <div className="hero-actions">
+            <a className="button button-prices" href="#prices">Цены</a>
             <a className="button button-primary" href={whatsappHref} target="_blank" rel="noreferrer"><MessageCircle size={19} /> Забронировать стол</a>
             <a className="button button-ghost" href={phoneHref}><Phone size={19} /> Позвонить</a>
           </div>
