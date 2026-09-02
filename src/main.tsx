@@ -39,18 +39,19 @@ function App() {
 
   return (
     <main>
+      <header className="site-header shell">
+        <a className="brand" href="#top" aria-label="Мастер-Круазе — наверх">
+          <span className="brand-mark">МК</span>
+          <span className="brand-copy"><b>Мастер-Круазе</b><small>Бильярдный клуб · Королёв</small></span>
+        </a>
+        <nav className="desktop-nav" aria-label="Основная навигация">
+          <a href="#club">О клубе</a><a href="#prices">Цены</a><a href="#gallery">Атмосфера</a><a href="#contacts">Контакты</a>
+        </nav>
+        <a className="header-call" href={phoneHref}><Phone size={18} /> <span>{phoneLabel}</span></a>
+        <button className="menu-button" aria-label="Открыть меню" onClick={() => setMenuOpen(true)}><Menu /></button>
+      </header>
+
       <section className="hero" style={{ '--hero-image': `url(${base}images/5ba279979f24eab771fc75c7_gb.jpg)` } as React.CSSProperties}>
-        <header className="site-header shell">
-          <a className="brand" href="#top" aria-label="Мастер-Круазе — наверх">
-            <span className="brand-mark">МК</span>
-            <span className="brand-copy"><b>Мастер-Круазе</b><small>Бильярдный клуб · Королёв</small></span>
-          </a>
-          <nav className="desktop-nav" aria-label="Основная навигация">
-            <a href="#club">О клубе</a><a href="#prices">Цены</a><a href="#gallery">Атмосфера</a><a href="#contacts">Контакты</a>
-          </nav>
-          <a className="header-call" href={phoneHref}><Phone size={18} /> <span>{phoneLabel}</span></a>
-          <button className="menu-button" aria-label="Открыть меню" onClick={() => setMenuOpen(true)}><Menu /></button>
-        </header>
 
         <div id="top" className="hero-content shell">
           <p className="eyebrow"><span /> Ежедневно с 16:00 до 04:00</p>
@@ -80,7 +81,7 @@ function App() {
       <section className="about section-pad shell">
         <div className="about-copy">
           <p className="section-kicker">Место для своей игры</p>
-          <h2>Здесь остаются только<br /><em>игроки и момент</em></h2>
+          <h2>Здесь остаются<br />только <em>игроки</em><br /><em>и момент</em></h2>
           <p className="section-lead">Спокойный вечер с друзьями, серьёзная партия или первый знакомый удар — в клубе есть место для любого темпа.</p>
           <div className="feature-list">
             <div><b>Профессиональные столы</b><small>Русская пирамида и американский пул</small></div>
