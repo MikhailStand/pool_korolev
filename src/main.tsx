@@ -186,11 +186,6 @@ function App() {
         <a className="back-to-top" href="#top"><ArrowUp /> Наверх</a>
       </footer>
 
-      <div className="mobile-booking-bar">
-        <a href={phoneHref}><Phone /><span>Позвонить</span></a>
-        <a className="mobile-booking-main" href={whatsappHref} target="_blank" rel="noreferrer"><MessageCircle /><span>Забронировать</span></a>
-      </div>
-
       {menuOpen && <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Меню">
         <button onClick={closeMenu} aria-label="Закрыть меню"><X /></button>
         <nav><a href="#club" onClick={closeMenu}>О клубе</a><a href="#prices" onClick={closeMenu}>Цены</a><a href="#gallery" onClick={closeMenu}>Атмосфера</a><a href="#contacts" onClick={closeMenu}>Контакты</a></nav>
