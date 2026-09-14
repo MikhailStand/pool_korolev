@@ -11,11 +11,11 @@ const phoneLabel = '+7 (916) 300-30-36';
 const mapsHref = 'https://yandex.ru/maps/org/glavny/1753194133/?ll=37.851401%2C55.912297&z=14';
 
 const gallery = [
-  { src: '5b9a7b96f61933d39bd79a5c_7.jpg', alt: 'Временная фотография бильярдного стола' },
-  { src: '5ba2ba1bdef57493e9d25819_obzor.jpg', alt: 'Временная фотография бильярдного зала' },
-  { src: '5ba2bc8f34a9e848030e8023_foto_8.jpg', alt: 'Временная фотография игрока за бильярдным столом' },
-  { src: '5ba2bc8f609bb85ce1890a12_foto_7.jpg', alt: 'Временная фотография игры в бильярд' },
-  { src: '5ba2bc8f3c27112211eecd66_foto_5.jpg', alt: 'Временная фотография игровой зоны' },
+  { src: 'glavny-billiards-player.jpg', alt: 'Иллюстративная фотография игрока за бильярдным столом' },
+  { src: 'glavny-billiards-hall.jpg', alt: 'Иллюстративная фотография бильярдного зала' },
+  { src: 'glavny-billiards-shot.jpg', alt: 'Иллюстративная фотография удара по бильярдному шару' },
+  { src: 'glavny-billiards-friends.jpg', alt: 'Иллюстративная фотография дружеской партии' },
+  { src: 'glavny-billiards-balls.jpg', alt: 'Иллюстративная фотография шаров для русского бильярда' },
 ];
 
 function App() {
@@ -66,7 +66,6 @@ function App() {
           <div className="hero-actions">
             <a className="button button-prices" href="#prices">Цены</a>
             <a className="button button-primary" href={phoneHref}><Phone size={19} /> Забронировать стол</a>
-            <a className="button button-ghost" href={phoneHref}><Phone size={19} /> Позвонить</a>
           </div>
           <div className="hero-meta">
             <a href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> ул. Ильича, 11</a>
@@ -77,12 +76,12 @@ function App() {
         <a className="scroll-hint" href="#club" aria-label="Листать к информации о клубе"><ArrowDown /></a>
       </section>
 
-      <section id="club" className="facts-zone" aria-label="Клуб в цифрах">
+      <section id="club" className="facts-zone" aria-label="Коротко о клубе">
         <div className="quick-facts shell">
-          <div><strong>6</strong><span>столов русского бильярда</span></div>
-          <div><strong>1</strong><span>стол американского пула</span></div>
-          <div><strong>500 ₽</strong><span>ориентир по стоимости пула</span></div>
-          <div><strong>600–1000 ₽</strong><span>диапазон цен на бильярд</span></div>
+          <div><small>В клубе</small><strong>7 столов</strong><span>6 русских и 1 для пула</span></div>
+          <div><small>Выбор игры</small><strong>2 формата</strong><span>русский бильярд и пул</span></div>
+          <div><small>Для игроков</small><strong>Турниры</strong><span>соревнования и новые соперники</span></div>
+          <div><small>Для отдыха</small><strong>Бар и Wi-Fi</strong><span>всё для долгого вечера</span></div>
         </div>
       </section>
 
@@ -98,7 +97,7 @@ function App() {
           </div>
         </div>
         <div className="about-image-wrap">
-          <img src={`${base}images/5b9a7b96f61933d39bd79a5c_7.jpg`} alt="Шары для русской пирамиды на зелёном сукне" />
+          <img src={`${base}images/glavny-billiards-balls.jpg`} alt="Иллюстративная фотография шаров для русского бильярда" />
         </div>
       </section>
 
@@ -131,7 +130,7 @@ function App() {
 
       <section id="gallery" className="gallery-section section-pad shell">
         <div className="section-heading split-heading">
-          <div><p className="section-kicker">Временные фотографии</p><h2>Почувствуйте <em>атмосферу</em></h2></div>
+          <div><p className="section-kicker">Иллюстративные фотографии</p><h2>Почувствуйте <em>атмосферу</em></h2></div>
           <p>После получения материалов мы заменим эти иллюстрации на настоящие фотографии клуба «Главный».</p>
         </div>
         <div className="gallery-grid">
@@ -193,7 +192,7 @@ function App() {
 
       {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" onClick={() => setLightbox(null)}>
         <button aria-label="Закрыть фотографию"><X /></button>
-        <img className={lightbox >= 2 ? 'lightbox-cropped' : undefined} src={`${base}images/${gallery[lightbox].src}`} alt={gallery[lightbox].alt} onClick={(event) => event.stopPropagation()} />
+        <img src={`${base}images/${gallery[lightbox].src}`} alt={gallery[lightbox].alt} onClick={(event) => event.stopPropagation()} />
       </div>}
     </main>
   );
