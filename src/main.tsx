@@ -69,7 +69,7 @@ function App() {
           </div>
           <div className="hero-meta">
             <a href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> ул. Ильича, 11</a>
-            <a href={mapsHref} target="_blank" rel="noreferrer"><Clock3 /> Режим работы — в Яндекс Картах</a>
+            <span><Clock3 /> Пн–чт, вс: 14:00–02:00 · Пт–сб: 14:00–04:00</span>
           </div>
           <p className="hero-photo-note">Временное фото — заменим на снимок клуба</p>
         </div>
@@ -80,8 +80,8 @@ function App() {
         <div className="quick-facts shell">
           <div><small>В клубе</small><strong>7 столов</strong><span>6 русских и 1 для пула</span></div>
           <div><small>Выбор игры</small><strong>2 формата</strong><span>русский бильярд и пул</span></div>
-          <div><small>Для игроков</small><strong>Турниры</strong><span>соревнования и новые соперники</span></div>
-          <div><small>Для отдыха</small><strong>Бар и Wi-Fi</strong><span>всё для долгого вечера</span></div>
+          <div><small>Для игры</small><strong>Прокат кия</strong><span>кий можно взять в клубе</span></div>
+          <div><small>Ещё в клубе</small><strong>Дартс</strong><span>игра для компании</span></div>
         </div>
       </section>
 
@@ -93,6 +93,7 @@ function App() {
           <div className="feature-list">
             <div><b>7 игровых столов</b><small>6 для русского бильярда и 1 для американского пула</small></div>
             <div><b>Турниры</b><small>В клубе проводятся бильярдные соревнования</small></div>
+            <div><b>Дартс и прокат кия</b><small>Ещё один формат игры и возможность взять кий в клубе</small></div>
             <div><b>Бар и Wi-Fi</b><small>Всё необходимое для длинной партии и хорошей компании</small></div>
           </div>
         </div>
@@ -109,13 +110,13 @@ function App() {
           </div>
 
           <div className="price-grid">
-            <a className="price-card price-card-featured" href="#booking" aria-label="Перейти к бронированию стола для русской пирамиды">
-              <div><p className="price-label">Русский бильярд</p><h3>600–1000 <small>₽ / час</small></h3><p className="price-caption">Ориентировочная стоимость</p></div>
+            <a className="price-card price-card-featured" href="#booking" aria-label="Перейти к бронированию стола для русского бильярда">
+              <div><p className="price-label">Русский бильярд</p><h3><span>600–1000</span><small>₽ / час</small></h3><p className="price-caption">Ориентировочная стоимость</p></div>
               <ul><li>6 столов для русского бильярда</li><li>Стоимость зависит от времени и выбранного стола</li><li>Точную цену уточните перед визитом</li></ul>
             </a>
 
             <a className="price-card" href="#booking" aria-label="Перейти к бронированию стола для американского пула">
-              <div><p className="price-label">Американский пул</p><h3>500 <small>₽ / час</small></h3><p className="price-caption">Ориентировочная стоимость</p></div>
+              <div><p className="price-label">Американский пул</p><h3><span>500</span><small>₽ / час</small></h3><p className="price-caption">Ориентировочная стоимость</p></div>
               <ul><li>1 стол для американского пула</li><li>Подходит для дружеской партии</li><li>Точную цену уточните перед визитом</li></ul>
             </a>
 
@@ -124,6 +125,12 @@ function App() {
               <span>Актуальную стоимость и свободные столы подскажут по телефону</span>
               <small>Нажмите, чтобы перейти к бронированию</small>
             </a>
+          </div>
+          <div className="extra-prices" aria-label="Дополнительные услуги">
+            <p className="extra-prices-heading">Дополнительно</p>
+            <div><span>Прокат кия</span><strong>200 ₽</strong></div>
+            <div><span>Дартс</span><strong>300 ₽</strong></div>
+            <small>Цены из меню клуба, которое давно не обновлялось. Уточните их при бронировании.</small>
           </div>
         </div>
       </section>
@@ -159,7 +166,7 @@ function App() {
             <p className="section-kicker">Контакты</p><h2>Увидимся<br /><em>за столом</em></h2>
             <div className="contact-lines">
               <a href={phoneHref}><span>Телефон</span><b>{phoneLabel}</b></a>
-              <div><span>Режим работы</span><b>Уточните перед визитом</b><small>Актуальный график указан в карточке клуба</small></div>
+              <div><span>Режим работы</span><b>Пн–чт, вс: 14:00–02:00<br />Пт–сб: 14:00–04:00</b></div>
               <div><span>Адрес</span><b>Королёв, улица Ильича, 11</b></div>
             </div>
             <div className="contact-buttons">

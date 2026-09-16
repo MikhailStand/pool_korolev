@@ -61,7 +61,7 @@ h1 em { color: var(--mint); font-style: italic; }
 .button-prices:hover { border-color: var(--mint); background: rgba(15,78,55,.72); }
 .button-ghost { border: 1px solid rgba(255,255,255,.26); background: rgba(6,18,13,.22); backdrop-filter: blur(10px); }
 .button-ghost:hover { border-color: rgba(255,255,255,.55); }
-.hero-meta { position: absolute; left: max(24px, calc((100vw - 1200px)/2)); bottom: 34px; display: flex; gap: 34px; color: rgba(245,240,231,.8); font-size: 15px; font-weight: 600; }
+.hero-meta { position: absolute; left: max(24px, calc((100vw - 1200px)/2)); bottom: 34px; display: flex; gap: 34px; color: rgba(245,240,231,.8); font-size: 16px; font-weight: 600; }
 .hero-meta a, .hero-meta span { display: flex; align-items: center; gap: 8px; }
 .hero-meta a:hover { color: #fff; }
 .hero-meta svg { width: 18px; }
@@ -74,7 +74,7 @@ h1 em { color: var(--mint); font-style: italic; }
 .quick-facts > div:last-child { border: 0; }
 .quick-facts small { color: rgba(157,216,184,.64); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .quick-facts strong { color: var(--mint); font: clamp(28px, 2.8vw, 42px)/1.08 'Prata', serif; letter-spacing: -.04em; text-align: center; text-wrap: balance; }
-.quick-facts span { width: 100%; color: rgba(245,240,231,.78); font-size: 15px; font-weight: 600; line-height: 1.55; text-align: center; text-wrap: balance; }
+.quick-facts span { width: 100%; color: rgba(245,240,231,.78); font-size: 16px; font-weight: 600; line-height: 1.55; text-align: center; text-wrap: balance; }
 
 .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(60px, 9vw, 140px); align-items: center; }
 .about h2 { font-size: clamp(44px, 4.4vw, 62px); line-height: 1.1; }
@@ -82,7 +82,7 @@ h1 em { color: var(--mint); font-style: italic; }
 .feature-list { display: grid; margin-top: 43px; border-bottom: 1px solid var(--line); }
 .feature-list > div { display: grid; gap: 7px; padding: 20px 0; border-top: 1px solid var(--line); }
 .feature-list b { font-size: 17px; }
-.feature-list small { color: rgba(245,240,231,.62); font-size: 14px; line-height: 1.55; }
+.feature-list small { color: rgba(245,240,231,.62); font-size: 16px; line-height: 1.55; }
 .about-image-wrap { position: relative; }
 .about-image-wrap::before { content: ''; position: absolute; inset: -18px 18px 18px -18px; border: 1px solid rgba(157,216,184,.18); z-index: -1; }
 .about-image-wrap img { width: 100%; aspect-ratio: .9; object-fit: cover; }
@@ -95,8 +95,8 @@ h1 em { color: var(--mint); font-style: italic; }
 .price-card:focus-visible, .price-note-card:focus-visible { outline: 3px solid var(--mint); outline-offset: 4px; }
 .price-card-featured { background: #112a20; }
 .price-label { margin: 0 0 14px; font-size: 20px; font-weight: 800; }
-.price-card h3 { margin: 0; font: clamp(46px, 4vw, 64px) 'Prata', serif; letter-spacing: -.05em; }
-.price-card h3 small { display: block; margin-top: 5px; font: 16px 'Manrope', sans-serif; color: rgba(245,240,231,.62); letter-spacing: 0; font-weight: 600; }
+.price-card h3 { margin: 0; display: flex; align-items: baseline; gap: 10px; white-space: nowrap; font: clamp(34px, 4vw, 60px)/1.15 'Prata', serif; letter-spacing: -.05em; }
+.price-card h3 small { flex: none; font: 16px 'Manrope', sans-serif; color: rgba(245,240,231,.7); letter-spacing: 0; font-weight: 700; }
 .price-caption { margin: 15px 0 0; color: rgba(245,240,231,.82); font-size: 19px; font-weight: 800; }
 .price-card ul { margin: 0; padding: 28px 0 0; display: grid; gap: 17px; border-top: 1px solid rgba(157,216,184,.17); list-style: none; color: rgba(245,240,231,.76); font-size: 16px; font-weight: 600; }
 .price-card li { display: flex; align-items: center; gap: 12px; }
@@ -108,6 +108,12 @@ h1 em { color: var(--mint); font-style: italic; }
 .price-note-card strong { z-index: 1; max-width: 260px; font: 42px/1.08 'Prata', serif; }
 .price-note-card span { z-index: 1; margin-top: 18px; color: rgba(255,255,255,.78); font-size: 16px; font-weight: 600; line-height: 1.6; }
 .price-note-card small { z-index: 1; margin-top: 36px; color: #fff; font-size: 14px; font-weight: 700; line-height: 1.5; }
+.extra-prices { margin-top: 18px; padding: 28px 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; gap: 16px 28px; border: 1px solid rgba(157,216,184,.2); background: #112820; }
+.extra-prices-heading { margin: 0; color: var(--mint); font: 27px 'Prata', serif; }
+.extra-prices > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-left: 28px; border-left: 1px solid rgba(157,216,184,.25); }
+.extra-prices > div span { font-size: 17px; font-weight: 700; }
+.extra-prices > div strong { color: var(--mint); white-space: nowrap; font: 26px 'Prata', serif; }
+.extra-prices > small { grid-column: 1 / -1; color: rgba(245,240,231,.64); font-size: 15px; line-height: 1.5; }
 
 .gallery-section { overflow: hidden; }
 .gallery-grid { display: grid; grid-template-columns: .9fr 1fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 14px; }
@@ -181,6 +187,7 @@ h1 em { color: var(--mint); font-style: italic; }
   .price-note-card { grid-column: 1 / 3; min-height: 280px; }
   .price-note-card p { margin-top: auto; }
   .contacts-grid { gap: 55px; }
+  .hero-photo-note { display: none; }
 }
 
 @media (max-width: 760px) {
@@ -194,21 +201,23 @@ h1 em { color: var(--mint); font-style: italic; }
   .hero { min-height: 720px; height: 100svh; }
   .hero::before { background-position: 58% center; }
   .hero::after { background: linear-gradient(90deg, rgba(3,12,8,.96), rgba(3,12,8,.48)), linear-gradient(0deg, rgba(3,12,8,.78), transparent 55%); }
-  .hero-content { height: 100%; padding-top: 78px; padding-bottom: 78px; }
+  .hero-content { height: 100%; padding-top: 78px; padding-bottom: 142px; }
   .eyebrow { font-size: 12px; line-height: 1.4; }
   h1 { font-size: clamp(46px, 14vw, 67px); line-height: 1.02; }
   .hero-lead { font-size: 14px; line-height: 1.65; margin-top: 23px; }
   .hero-actions { flex-direction: column; align-items: stretch; margin-top: 28px; }
   .hero-actions .button { width: 100%; }
-  .hero-meta { left: 14px; bottom: 22px; gap: 14px; font-size: 14px; }
-  .hero-meta a:nth-child(2), .scroll-hint { display: none; }
+  .hero-meta { left: 14px; right: 14px; bottom: 22px; flex-direction: column; gap: 9px; font-size: 15px; }
+  .hero-meta span { align-items: flex-start; }
+  .hero-meta svg { flex: none; }
+  .scroll-hint { display: none; }
   .hero-photo-note { display: none; }
   .quick-facts { grid-template-columns: 1fr 1fr; padding-block: 0; }
   .quick-facts > div, .quick-facts > div:first-child { min-height: 190px; border-bottom: 1px solid rgba(157,216,184,.22); padding: 28px 20px; }
   .quick-facts > div:nth-child(2) { border-right: 0; }
   .quick-facts > div:nth-child(n+3) { border-bottom: 0; }
   .quick-facts strong { font-size: clamp(26px, 8vw, 34px); }
-  .quick-facts span { font-size: 14px; }
+  .quick-facts span { font-size: 15px; }
   .about { grid-template-columns: 1fr; }
   .about h2 { font-size: clamp(42px, 12vw, 58px); }
   .about-image-wrap { width: calc(100% - 18px); margin-left: 18px; }
@@ -216,6 +225,9 @@ h1 em { color: var(--mint); font-style: italic; }
   .price-grid { grid-template-columns: 1fr; }
   .price-card { min-height: 450px; padding: 32px 28px; }
   .price-note-card { grid-column: auto; min-height: 330px; }
+  .extra-prices { grid-template-columns: 1fr 1fr; padding: 28px; }
+  .extra-prices-heading { grid-column: 1 / -1; }
+  .extra-prices > div { padding-left: 0; border-left: 0; }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 330px 220px 220px; }
   .gallery-item-1 { grid-column: 1 / 3; grid-row: auto; }
   .gallery-item-2 { grid-column: auto; }
@@ -239,7 +251,11 @@ h1 em { color: var(--mint); font-style: italic; }
   .section-heading h2, .about h2, .booking-banner h2, .contacts h2 { font-size: 40px; }
   .quick-facts > div, .quick-facts > div:first-child { min-height: 175px; gap: 13px; padding: 24px 14px; }
   .quick-facts strong { font-size: clamp(24px, 7.5vw, 30px); }
-  .quick-facts span { font-size: 14px; }
+  .quick-facts span { font-size: 15px; }
+  .price-card h3 { gap: 6px; font-size: 32px; }
+  .extra-prices { gap: 18px; }
+  .extra-prices > div { display: grid; gap: 6px; }
+  .extra-prices > div span { font-size: 16px; }
   .contact-buttons .button { width: 100%; }
 }
 
