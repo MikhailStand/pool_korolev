@@ -9,6 +9,10 @@ const base = import.meta.env.BASE_URL;
 const phoneHref = 'tel:+79163003036';
 const phoneLabel = '+7 (916) 300-30-36';
 const mapsHref = 'https://yandex.ru/maps/org/glavny/1753194133/?ll=37.851401%2C55.912297&z=14';
+const openingHours = [
+  { days: 'Вс–Чт', time: '14:00–02:00' },
+  { days: 'Пт–Сб', time: '14:00–04:00' },
+];
 
 const gallery = [
   { src: 'glavny-billiards-player.jpg', alt: 'Иллюстративная фотография игрока за бильярдным столом' },
@@ -69,7 +73,9 @@ function App() {
           </div>
           <div className="hero-meta">
             <a href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> ул. Ильича, 11</a>
-            <span><Clock3 /> Пн–чт, вс: 14:00–02:00 · Пт–сб: 14:00–04:00</span>
+            <div className="hero-hours"><Clock3 /><div className="hours-list" aria-label="Режим работы">
+              {openingHours.map(({ days, time }) => <span key={days}><b>{days}</b><strong>{time}</strong></span>)}
+            </div></div>
           </div>
           <p className="hero-photo-note">Временное фото — заменим на снимок клуба</p>
         </div>
@@ -166,7 +172,9 @@ function App() {
             <p className="section-kicker">Контакты</p><h2>Увидимся<br /><em>за столом</em></h2>
             <div className="contact-lines">
               <a href={phoneHref}><span>Телефон</span><b>{phoneLabel}</b></a>
-              <div><span>Режим работы</span><b>Пн–чт, вс: 14:00–02:00<br />Пт–сб: 14:00–04:00</b></div>
+              <div><span>Режим работы</span><div className="hours-list contact-hours">
+                {openingHours.map(({ days, time }) => <span key={days}><b>{days}</b><strong>{time}</strong></span>)}
+              </div></div>
               <div><span>Адрес</span><b>Королёв, улица Ильича, 11</b></div>
             </div>
             <div className="contact-buttons">
