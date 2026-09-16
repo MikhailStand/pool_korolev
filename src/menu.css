@@ -32,9 +32,18 @@
 .menu-group { padding-block: 90px 100px; scroll-margin-top: 82px; }
 .menu-group-base { background: #f5f1e9; }
 .menu-group-alt { background: #e8eee7; }
-.menu-group-heading { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 48px; }
-.menu-group-heading h2 { margin: 0; font: clamp(39px, 4.3vw, 62px)/1.1 'Prata', Georgia, serif; letter-spacing: -.045em; }
-.menu-group-heading > p { width: min(420px, 100%); margin: 0 0 6px; color: #55635a; font-size: 17px; line-height: 1.65; }
+.menu-group-grill { --group-color: #392d24; --group-accent: #f4cd92; }
+.menu-group-salads { --group-color: #244938; --group-accent: #d2e6b8; }
+.menu-group-hot { --group-color: #543b2c; --group-accent: #f3d1a4; }
+.menu-group-snacks { --group-color: #2d4334; --group-accent: #d4e0b7; }
+.menu-group-desserts { --group-color: #4c3537; --group-accent: #f3c6c0; }
+.menu-group-drinks { --group-color: #224446; --group-accent: #c4e5df; }
+.menu-group-hookah { --group-color: #30383b; --group-accent: #e8d6ba; }
+.menu-group-heading { position: relative; isolation: isolate; min-height: 225px; padding: 42px 48px; display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 48px; overflow: hidden; background: var(--group-color); background: radial-gradient(circle at 87% 18%, color-mix(in srgb, var(--group-accent) 14%, transparent), transparent 36%), var(--group-color); color: #f7f3ea; }
+.menu-group-art { position: absolute; z-index: -1; right: 28px; top: -13px; color: var(--group-accent); opacity: .11; font: 400 clamp(70px, 8vw, 132px)/1 'Prata', Georgia, serif; letter-spacing: -.08em; white-space: nowrap; pointer-events: none; }
+.menu-group-heading .menu-kicker { color: var(--group-accent); }
+.menu-group-heading h2 { max-width: 700px; margin: 0; font: clamp(39px, 4.3vw, 62px)/1.1 'Prata', Georgia, serif; letter-spacing: -.045em; text-wrap: balance; }
+.menu-group-heading > p { position: relative; flex: 0 1 300px; margin: 0 0 6px; color: rgba(247,243,234,.88); font-size: 17px; line-height: 1.65; }
 .menu-subsection { margin-top: 54px; }
 .menu-subsection:first-of-type { margin-top: 0; }
 .menu-subsection h3 { margin: 0 0 10px; padding-bottom: 19px; border-bottom: 2px solid #94b6a0; color: #205a3d; font-size: clamp(22px, 2.2vw, 29px); line-height: 1.3; }
@@ -44,6 +53,18 @@
 .menu-item-name { color: #202b23; font-size: 17px; font-weight: 700; line-height: 1.48; overflow-wrap: anywhere; }
 .menu-item small { color: #5c6a60; font-size: 14px; line-height: 1.55; }
 .menu-item-price { flex: none; color: #194c35; font-size: 19px; font-weight: 800; line-height: 1.45; white-space: nowrap; }
+.hookah-feature { display: grid; grid-template-columns: 1.2fr .8fr; min-height: 350px; background: #faf8f2; border: 1px solid rgba(35,65,54,.16); }
+.hookah-feature > div { padding: 44px 48px; }
+.hookah-feature > div:first-child { display: flex; flex-direction: column; align-items: flex-start; }
+.hookah-feature .menu-kicker { color: #607969; }
+.hookah-feature h3 { margin: 0; font: 400 clamp(44px, 5vw, 68px)/1.1 'Prata', Georgia, serif; letter-spacing: -.045em; }
+.hookah-feature > div:first-child > p:not(.menu-kicker) { max-width: 530px; margin: 22px 0 0; color: #45564b; font-size: 17px; line-height: 1.7; }
+.hookah-feature > div:first-child > a { min-height: 48px; margin-top: auto; display: inline-flex; align-items: center; gap: 7px; color: #1f6847; font-size: 15px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.hookah-feature > div:last-child { display: flex; flex-direction: column; align-items: flex-start; background: #e8e4d9; }
+.hookah-feature > div:last-child > span { color: #466c56; font-size: 14px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.hookah-feature > div:last-child > strong { margin: auto 0; font: 400 clamp(35px, 4vw, 51px)/1.13 'Prata', Georgia, serif; letter-spacing: -.045em; }
+.hookah-feature .button { min-height: 56px; background: #173f2d; color: #fff; }
+.hookah-feature .button:hover { background: #246546; }
 
 .menu-end { padding-block: 100px; background: #153b2a; color: #f5f0e7; }
 .menu-end-inner { display: flex; justify-content: space-between; align-items: center; gap: 36px; }
@@ -74,13 +95,18 @@
   .menu-category-nav { padding-bottom: 55px; gap: 8px; }
   .menu-category-nav a { min-height: 46px; padding-inline: 16px; font-size: 14px; }
   .menu-group { padding-block: 70px 78px; scroll-margin-top: 70px; }
-  .menu-group-heading { display: block; margin-bottom: 42px; }
-  .menu-group-heading > p { margin-top: 18px; font-size: 16px; }
+  .menu-group-heading { min-height: 0; display: block; padding: 32px 28px; margin-bottom: 42px; }
+  .menu-group-art { top: auto; bottom: -6px; right: 12px; font-size: 70px; opacity: .07; }
+  .menu-group-heading > p { margin-top: 24px; font-size: 16px; }
   .menu-subsection { margin-top: 45px; }
   .menu-item-grid { grid-template-columns: 1fr; }
   .menu-item { min-height: 70px; padding-block: 17px; }
   .menu-item-name { font-size: 16px; }
   .menu-item-price { font-size: 18px; }
+  .hookah-feature { grid-template-columns: 1fr; }
+  .hookah-feature > div { padding: 33px 28px; }
+  .hookah-feature > div:first-child > a { margin-top: 24px; }
+  .hookah-feature > div:last-child { min-height: 250px; }
   .menu-end { padding-block: 78px; }
   .menu-end-inner { display: block; }
   .menu-end .button { margin-top: 30px; width: 100%; }
@@ -93,4 +119,5 @@
   .menu-hero h1 { font-size: 42px; }
   .menu-item { gap: 10px; }
   .menu-item-price { font-size: 17px; }
+  .hookah-feature .button { width: 100%; padding-inline: 16px; font-size: 15px; }
 }

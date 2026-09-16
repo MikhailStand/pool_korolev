@@ -18,32 +18,44 @@ const groups = [
   {
     id: 'grill', label: 'Мангал', title: 'Всё с огня',
     description: 'Шашлык, рыба, овощи и блюда для большой компании.',
+    art: 'ОГОНЬ',
     titles: ['ШАШЛЫКИ', 'САДЖ-КЕБАБ', 'РЫБНЫЕ БЛЮДА НА МАНГАЛЕ', 'ОВОЩИ НА МАНГАЛЕ', 'СТЕЙКИ'],
   },
   {
     id: 'salads', label: 'Салаты', title: 'Салаты',
     description: 'От знакомой классики до тёплых салатов.',
+    art: 'СВЕЖЕСТЬ',
     titles: ['САЛАТЫ'],
   },
   {
     id: 'hot', label: 'Горячее', title: 'Сытная часть вечера',
     description: 'Супы, горячие блюда, паста и бургеры.',
+    art: 'ТЕПЛО',
     titles: ['ПЕРВЫЕ БЛЮДА', 'ВТОРЫЕ БЛЮДА', 'БУРГЕРЫ', 'ПАСТА'],
   },
   {
     id: 'snacks', label: 'Закуски', title: 'К столу',
     description: 'Закуски, нарезки и соусы к общей трапезе.',
+    art: 'ВМЕСТЕ',
     titles: ['НАРЕЗКИ / ЗАКУСКИ / БУТЕРБРОДЫ', 'ЗАКУСКИ К ПИВУ', 'СОУСЫ'],
   },
   {
     id: 'desserts', label: 'Десерты', title: 'Что-нибудь сладкое',
     description: 'Десерты, чтобы завершить ужин.',
+    art: 'ДЕСЕРТ',
     titles: ['ДЕСЕРТЫ'],
   },
   {
     id: 'drinks', label: 'Напитки', title: 'К вашему столу',
     description: 'Чай, кофе, лимонады, соки и пиво.',
+    art: 'НАПИТКИ',
     titles: ['НАПИТКИ', 'ЧАЙ (900 мл.)', 'КОФЕ', 'ЛИМОНАДЫ (1 л.)', 'СОКИ RICH (200 мл./1 л.) в ассортименте', 'МОЛОЧНЫЕ КОКТЕЙЛИ (400 мл.)', 'НАПИТКИ ГАЗИРОВАННЫЕ (в стекле) 330 мл.', 'ПИВО'],
+  },
+  {
+    id: 'hookah', label: 'Кальян', title: 'Пауза между партиями',
+    description: 'Для вечера, который не хочется заканчивать.',
+    art: 'КАЛЬЯН',
+    titles: [],
   },
 ];
 
@@ -81,7 +93,7 @@ function MenuPage() {
 
     <div className="menu-intro shell">
       <div><span>Меню «Ретро»</span><h2>Что закажем?</h2></div>
-      <p>Позиции и цены перенесены с <a href={data.source} target="_blank" rel="noreferrer">официального сайта кафе</a>{` ${checked}. Наличие блюд и итоговую стоимость уточняйте при заказе.`}</p>
+      <p>Блюда и цены перенесены с <a href={data.source} target="_blank" rel="noreferrer">официального сайта кафе</a>{` ${checked}. Кальян тоже указан на сайте, но без опубликованной стоимости. Наличие и итоговую цену уточняйте при заказе.`}</p>
     </div>
 
     <nav className="menu-category-nav shell" aria-label="Разделы меню">
@@ -89,9 +101,10 @@ function MenuPage() {
     </nav>
 
     <div className="menu-groups">
-      {groups.map((group, groupIndex) => <section className={`menu-group menu-group-${groupIndex % 2 ? 'alt' : 'base'}`} id={group.id} key={group.id}>
+      {groups.map((group, groupIndex) => <section className={`menu-group menu-group-${groupIndex % 2 ? 'alt' : 'base'} menu-group-${group.id}`} id={group.id} key={group.id}>
         <div className="shell">
-          <div className="menu-group-heading"><div><p className="menu-kicker">{group.label}</p><h2>{group.title}</h2></div><p>{group.description}</p></div>
+          <div className="menu-group-heading"><span className="menu-group-art" aria-hidden="true">{group.art}</span><div><p className="menu-kicker">{group.label}</p><h2>{group.title}</h2></div><p>{group.description}</p></div>
+          {group.id === 'hookah' && <div className="hookah-feature"><div><p className="menu-kicker">В меню кафе</p><h3>Кальян</h3><p>На официальном сайте «Ретро» есть отдельный раздел кальяна. Варианты табака и стоимость лучше спросить при бронировании.</p><a href="https://retro-korolev.ru/menu/hookah.html" target="_blank" rel="noreferrer">Раздел кальяна на сайте «Ретро» <ArrowUpRight size={18} /></a></div><div><span>Стоимость</span><strong>Уточнить<br />в кафе</strong><a className="button button-primary" href={phoneHref}><Phone size={19} /> Спросить по телефону</a></div></div>}
           {group.titles.map((title) => {
             const section = sections.get(title);
             if (!section) return null;

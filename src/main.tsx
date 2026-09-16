@@ -75,12 +75,13 @@ function App() {
     </section>
 
     <section className="prices section-pad" aria-labelledby="game-heading"><div className="shell">
-      <div className="section-heading split-heading"><div><p className="section-kicker">Выбор игры</p><h2 id="game-heading">Во что <em>сыграем?</em></h2></div><p>Актуальные цены и свободные столы лучше уточнить напрямую: открытые источники не дают надёжного тарифа на игру.</p></div>
+      <div className="section-heading split-heading"><div><p className="section-kicker">Выбор игры</p><h2 id="game-heading">Во что <em>сыграем?</em></h2></div><p>Для ориентира — опубликованные цены клуба «Визави» по тому же адресу. Это не подтверждённый тариф «Ретро»: точную стоимость уточните перед игрой.</p></div>
       <div className="game-grid">
-        <a className="game-card" href="#booking" aria-label="Узнать о бронировании русского бильярда"><span>Классическая партия</span><strong>Русский<br />бильярд</strong><small>Узнать о бронировании <ArrowUpRight /></small></a>
-        <a className="game-card" href="#booking" aria-label="Узнать о бронировании американского пула"><span>Игра для компании</span><strong>Американский<br />пул</strong><small>Узнать о бронировании <ArrowUpRight /></small></a>
-        <div className="game-info"><p>Стоимость игры</p><strong>Уточните<br />по телефону</strong><span>Подскажут цену и помогут выбрать свободный стол.</span><a href={phoneHref}><Phone size={18} /> {phoneLabel}</a></div>
+        <a className="game-card" href="#booking" aria-label="Русский бильярд: ориентир 450–550 рублей в час, перейти к бронированию"><span>Русский бильярд</span><strong className="game-price">450–550 <small>₽ / час</small></strong><p>Ориентир по соседнему клубу, не тариф «Ретро»</p><small>Уточнить цену и забронировать <ArrowUpRight /></small></a>
+        <a className="game-card" href="#booking" aria-label="Американский пул: ориентир 400–450 рублей в час, перейти к бронированию"><span>Американский пул</span><strong className="game-price">400–450 <small>₽ / час</small></strong><p>Ориентир по соседнему клубу, не тариф «Ретро»</p><small>Уточнить цену и забронировать <ArrowUpRight /></small></a>
+        <div className="game-info"><p>Перед игрой</p><strong>Уточните<br />тариф</strong><span>Цена может зависеть от дня и времени. По телефону подскажут стоимость и свободные столы.</span><a href={phoneHref}><Phone size={18} /> {phoneLabel}</a></div>
       </div>
+      <p className="game-source">Источник ориентиров: <a href="https://visavis-club.ru/" target="_blank" rel="noreferrer">прайс клуба «Визави» <ArrowUpRight size={15} /></a>. «Визави» и «Ретро» — разные заведения по одному адресу.</p>
     </div></section>
 
     <section id="gallery" className="gallery-section section-pad shell"><div className="section-heading split-heading"><div><p className="section-kicker">Атмосфера игры</p><h2>Время для <em>партии</em></h2></div><p>Пока здесь иллюстративные кадры бильярда, не фотографии «Ретро». Позже их можно заменить снимками заведения.</p></div>
@@ -89,7 +90,7 @@ function App() {
 
     <section id="food" className="food-section section-pad"><div className="shell food-layout">
       <div className="food-copy"><p className="section-kicker">Кухня Ретро</p><h2>Партия сыграна.<br /><em>Ужин ждёт.</em></h2><p className="section-lead">Здесь готовят блюда с мангала, салаты, горячее и закуски. Можно прийти поесть, собрать компанию за столом или продолжить вечер после бильярда.</p>
-        <div className="food-types" aria-label="Разделы меню"><a href={`${ourMenuHref}#grill`}>Мангал и шашлык</a><a href={`${ourMenuHref}#salads`}>Салаты</a><a href={`${ourMenuHref}#hot`}>Горячие блюда</a><a href={`${ourMenuHref}#snacks`}>Закуски</a></div>
+        <div className="food-types" aria-label="Разделы меню"><a href={`${ourMenuHref}#grill`}>Мангал и шашлык</a><a href={`${ourMenuHref}#salads`}>Салаты</a><a href={`${ourMenuHref}#hot`}>Горячие блюда</a><a href={`${ourMenuHref}#snacks`}>Закуски</a><a href={`${ourMenuHref}#hookah`}>Кальян</a></div>
         <div className="food-actions"><a className="button button-primary" href={ourMenuHref}>Посмотреть меню <ArrowUpRight size={18} /></a><a className="button button-ghost" href={phoneHref}><Phone size={18} /> Уточнить по телефону</a></div>
         <p className="food-disclaimer">Меню на отдельной странице собрано по данным <a href={menuHref} target="_blank" rel="noreferrer">сайта «Ретро»</a>. Цены и наличие блюд уточняйте по телефону.</p>
       </div>

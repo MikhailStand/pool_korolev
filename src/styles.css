@@ -126,13 +126,19 @@ h1 em { color: var(--mint); font-style: italic; }
 .game-card { border: 1px solid rgba(157,216,184,.24); background: #112a20; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
 .game-card:hover { transform: translateY(-5px); background: #16382a; border-color: rgba(157,216,184,.6); }
 .game-card > span, .game-info p { margin: 0; color: var(--mint); font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.game-card strong { margin: auto 0; font: 400 clamp(31px, 3vw, 44px)/1.12 'Prata', Georgia, serif; letter-spacing: -.04em; }
+.game-card .game-price { margin: auto 0 10px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 12px; font: 400 clamp(36px, 3.7vw, 53px)/1.12 'Prata', Georgia, serif; letter-spacing: -.055em; white-space: nowrap; }
+.game-price small { color: var(--mint); font: 700 17px/1.4 'Manrope', system-ui, sans-serif; letter-spacing: 0; }
+.game-card p { margin: 0 0 34px; color: rgba(245,240,231,.72); font-size: 15px; line-height: 1.5; }
 .game-card small { display: inline-flex; align-items: center; gap: 8px; width: fit-content; color: var(--cream); font-size: 15px; font-weight: 800; }
+.game-card .game-price small { color: var(--mint); font-size: 17px; }
 .game-card small svg { width: 18px; height: 18px; }
+.game-card:focus-visible { outline: 3px solid var(--mint); outline-offset: 4px; }
 .game-info { background: #16563f; }
 .game-info strong { margin: auto 0 18px; font: 400 clamp(30px, 2.5vw, 38px)/1.13 'Prata', Georgia, serif; }
 .game-info > span { color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.55; }
 .game-info a { width: fit-content; min-height: 44px; margin-top: 22px; display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; border-bottom: 1px solid rgba(255,255,255,.5); }
+.game-source { margin: 22px 0 0; color: rgba(245,240,231,.68); font-size: 14px; line-height: 1.6; }
+.game-source a { color: var(--mint); display: inline-flex; align-items: center; gap: 3px; text-decoration: underline; text-underline-offset: 3px; }
 
 .gallery-section { overflow: hidden; }
 .gallery-grid { display: grid; grid-template-columns: .9fr 1fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 14px; }
