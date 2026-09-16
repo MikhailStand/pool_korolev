@@ -53,6 +53,21 @@
 .menu-item-name { color: #202b23; font-size: 17px; font-weight: 700; line-height: 1.48; overflow-wrap: anywhere; }
 .menu-item small { color: #5c6a60; font-size: 14px; line-height: 1.55; }
 .menu-item-price { flex: none; color: #194c35; font-size: 19px; font-weight: 800; line-height: 1.45; white-space: nowrap; }
+.drink-jump { display: flex; flex-wrap: wrap; gap: 10px; margin: -6px 0 34px; }
+.drink-jump a { min-height: 48px; padding: 0 22px; display: inline-flex; align-items: center; border: 1px solid #a5c0ac; border-radius: 999px; color: #173f2d; font-size: 15px; font-weight: 800; transition: background .2s ease, border-color .2s ease; }
+.drink-jump a:hover { background: #d4e3d7; border-color: #739f7b; }
+.drink-kind { scroll-margin-top: 100px; }
+.drink-kind + .drink-kind { margin-top: 76px; }
+.drink-kind-heading { padding: 26px 32px; border-left: 5px solid #608d70; background: #dce8dc; }
+.drink-kind-heading p { margin: 0 0 5px; color: #426b50; font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.drink-kind-heading h3 { margin: 0; font: 400 clamp(30px, 3.4vw, 44px)/1.15 'Prata', Georgia, serif; letter-spacing: -.04em; }
+.drink-kind-heading + .menu-subsection { margin-top: 35px; }
+.drink-kind-alcohol .drink-kind-heading { border-color: #9b785d; background: #ede2d4; }
+.drink-kind-alcohol .drink-kind-heading p { color: #7e5944; }
+.drink-cocktail-note { margin-top: 22px; padding: 25px 30px; display: flex; justify-content: space-between; align-items: center; gap: 24px; border: 1px solid rgba(64,75,54,.17); background: rgba(255,255,255,.55); }
+.drink-cocktail-note strong { font-size: 20px; }
+.drink-cocktail-note p { max-width: 590px; margin: 5px 0 0; color: #526056; font-size: 16px; line-height: 1.6; }
+.drink-cocktail-note a { flex: none; min-height: 48px; display: inline-flex; align-items: center; gap: 7px; color: #1d6445; font-size: 15px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
 .hookah-feature { display: grid; grid-template-columns: 1.2fr .8fr; min-height: 350px; background: #faf8f2; border: 1px solid rgba(35,65,54,.16); }
 .hookah-feature > div { padding: 44px 48px; }
 .hookah-feature > div:first-child { display: flex; flex-direction: column; align-items: flex-start; }
@@ -103,6 +118,11 @@
   .menu-item { min-height: 70px; padding-block: 17px; }
   .menu-item-name { font-size: 16px; }
   .menu-item-price { font-size: 18px; }
+  .drink-kind { scroll-margin-top: 86px; }
+  .drink-kind + .drink-kind { margin-top: 58px; }
+  .drink-kind-heading { padding: 22px 24px; }
+  .drink-cocktail-note { display: block; padding: 22px 24px; }
+  .drink-cocktail-note a { margin-top: 18px; }
   .hookah-feature { grid-template-columns: 1fr; }
   .hookah-feature > div { padding: 33px 28px; }
   .hookah-feature > div:first-child > a { margin-top: 24px; }

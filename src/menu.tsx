@@ -63,6 +63,19 @@ const priceLabel = (price: string) => price === 'Уточнить'
   ? price
   : `${price.replace(/\b\d{4,}\b/g, (value) => Number(value).toLocaleString('ru-RU')).replace(/\.(?=\d{3}(?:\D|$))/g, ' ').replaceAll('/', ' / ')} ₽`;
 
+function MenuSectionBlock({ title, displayTitle, items }: { title: string; displayTitle?: string; items?: MenuItem[] }) {
+  const section = sections.get(title);
+  if (!section) return null;
+  const visibleItems = items ?? section.items;
+  return <div className="menu-subsection">
+    <h3>{displayTitle ?? section.title}</h3>
+    <div className="menu-item-grid">{visibleItems.map((item, index) => <div className="menu-item" key={`${title}-${index}`}>
+      <div><span className="menu-item-name">{item.name}</span>{item.note && <small>{item.note}</small>}</div>
+      <strong className="menu-item-price">{priceLabel(item.price)}</strong>
+    </div>)}</div>
+  </div>;
+}
+
 function MenuPage() {
   useEffect(() => {
     if (!window.location.hash) return;
@@ -105,17 +118,11 @@ function MenuPage() {
         <div className="shell">
           <div className="menu-group-heading"><span className="menu-group-art" aria-hidden="true">{group.art}</span><div><p className="menu-kicker">{group.label}</p><h2>{group.title}</h2></div><p>{group.description}</p></div>
           {group.id === 'hookah' && <div className="hookah-feature"><div><p className="menu-kicker">В меню кафе</p><h3>Кальян</h3><p>На официальном сайте «Ретро» есть отдельный раздел кальяна. Варианты табака и стоимость лучше спросить при бронировании.</p><a href="https://retro-korolev.ru/menu/hookah.html" target="_blank" rel="noreferrer">Раздел кальяна на сайте «Ретро» <ArrowUpRight size={18} /></a></div><div><span>Стоимость</span><strong>Уточнить<br />в кафе</strong><a className="button button-primary" href={phoneHref}><Phone size={19} /> Спросить по телефону</a></div></div>}
-          {group.titles.map((title) => {
-            const section = sections.get(title);
-            if (!section) return null;
-            return <div className="menu-subsection" key={title}>
-              <h3>{section.title}</h3>
-              <div className="menu-item-grid">{section.items.map((item, index) => <div className="menu-item" key={`${title}-${index}`}>
-                <div><span className="menu-item-name">{item.name}</span>{item.note && <small>{item.note}</small>}</div>
-                <strong className="menu-item-price">{priceLabel(item.price)}</strong>
-              </div>)}</div>
-            </div>;
-          })}
+          {group.id === 'drinks' ? <>
+            <div className="drink-jump" aria-label="Виды напитков"><a href="#soft-drinks">Безалкогольные</a><a href="#alcohol-drinks">Алкогольные</a></div>
+            <div className="drink-kind" id="soft-drinks"><div className="drink-kind-heading"><p>Чай, кофе, лимонады и другое</p><h3>Безалкогольные</h3></div>{group.titles.filter((title) => title !== 'ПИВО').map((title) => <MenuSectionBlock title={title} key={title} />)}<MenuSectionBlock title="ПИВО" displayTitle="БЕЗАЛКОГОЛЬНОЕ ПИВО" items={sections.get('ПИВО')?.items.filter((item) => item.name.includes('«0»'))} /></div>
+            <div className="drink-kind drink-kind-alcohol" id="alcohol-drinks"><div className="drink-kind-heading"><p>Барное меню</p><h3>Алкогольные</h3></div><div className="drink-cocktail-note"><div><strong>Коктейли</strong><p>В барном разделе «Ретро» есть коктейли. Состав и цену уточните на месте.</p></div><a href="https://retro-korolev.ru/menu/bar.html" target="_blank" rel="noreferrer">Открыть барное меню <ArrowUpRight size={18} /></a></div><MenuSectionBlock title="ПИВО" items={sections.get('ПИВО')?.items.filter((item) => !item.name.includes('«0»'))} /></div>
+          </> : group.titles.map((title) => <MenuSectionBlock title={title} key={title} />)}
         </div>
       </section>)}
     </div>
