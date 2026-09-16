@@ -8,7 +8,7 @@ const phoneHref = 'tel:+79998382917';
 const phoneLabel = '+7 (999) 838-29-17';
 const mapsHref = 'https://yandex.ru/maps/org/retro/17968240150/?ll=37.863951%2C55.920845&z=15';
 const menuHref = 'https://retro-korolev.ru/menu.html';
-const backupMenuHref = 'https://restaurantguru.com/Retro-Korolyov/menu';
+const ourMenuHref = `${base}menu.html`;
 const gallery = [
   { src: 'glavny-billiards-player.jpg', alt: 'Иллюстрация: игрок за бильярдным столом' },
   { src: 'glavny-billiards-hall.jpg', alt: 'Иллюстрация: бильярдный зал' },
@@ -89,9 +89,9 @@ function App() {
 
     <section id="food" className="food-section section-pad"><div className="shell food-layout">
       <div className="food-copy"><p className="section-kicker">Кухня Ретро</p><h2>Партия сыграна.<br /><em>Ужин ждёт.</em></h2><p className="section-lead">Здесь готовят блюда с мангала, салаты, горячее и закуски. Можно прийти поесть, собрать компанию за столом или продолжить вечер после бильярда.</p>
-        <div className="food-types" aria-label="Разделы меню"><a href="https://retro-korolev.ru/menu/kebabs.html" target="_blank" rel="noreferrer">Мангал и шашлык</a><a href="https://retro-korolev.ru/menu/salads.html" target="_blank" rel="noreferrer">Салаты</a><a href="https://retro-korolev.ru/menu/lunch.html" target="_blank" rel="noreferrer">Горячие блюда</a><a href="https://retro-korolev.ru/menu/snacks-slicing-sandwiches.html" target="_blank" rel="noreferrer">Закуски</a></div>
-        <div className="food-actions"><a className="button button-primary" href={menuHref} target="_blank" rel="noreferrer">Посмотреть меню <ArrowUpRight size={18} /></a><a className="button button-ghost" href={phoneHref}><Phone size={18} /> Уточнить по телефону</a></div>
-        <p className="food-disclaimer">Меню — на официальном сайте «Ретро». Если он не загрузится, есть <a href={backupMenuHref} target="_blank" rel="noreferrer">запасная ссылка</a>; цены и наличие блюд уточняйте по телефону.</p>
+        <div className="food-types" aria-label="Разделы меню"><a href={`${ourMenuHref}#grill`}>Мангал и шашлык</a><a href={`${ourMenuHref}#salads`}>Салаты</a><a href={`${ourMenuHref}#hot`}>Горячие блюда</a><a href={`${ourMenuHref}#snacks`}>Закуски</a></div>
+        <div className="food-actions"><a className="button button-primary" href={ourMenuHref}>Посмотреть меню <ArrowUpRight size={18} /></a><a className="button button-ghost" href={phoneHref}><Phone size={18} /> Уточнить по телефону</a></div>
+        <p className="food-disclaimer">Меню на отдельной странице собрано по данным <a href={menuHref} target="_blank" rel="noreferrer">сайта «Ретро»</a>. Цены и наличие блюд уточняйте по телефону.</p>
       </div>
       <figure className="food-photo"><img src={`${base}images/retro-food-grill.jpg`} alt="Иллюстрация: шашлык, овощи, салат и хлеб на столе" loading="lazy" /><figcaption>Иллюстративное изображение, не фото заведения</figcaption></figure>
     </div></section>
