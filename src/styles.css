@@ -28,7 +28,7 @@ img { max-width: 100%; display: block; }
 .split-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 60px; margin-bottom: 62px; }
 .split-heading > p { width: min(470px, 100%); margin: 0 0 8px; color: rgba(245,240,231,.64); font-size: 16px; line-height: 1.7; }
 
-.hero { --hero-image: none; min-height: 760px; height: 100svh; position: relative; isolation: isolate; overflow: hidden; background: #07110d; }
+.hero { --hero-image: none; min-height: 680px; height: 100svh; position: relative; isolation: isolate; overflow: hidden; background: #07110d; }
 .hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background-image: var(--hero-image); background-size: cover; background-position: center; transform: scale(1.02); animation: hero-in 1.6s cubic-bezier(.2,.7,.2,1) both; }
 .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(3,12,8,.5), transparent 28%), linear-gradient(90deg, rgba(3,12,8,.96) 0%, rgba(3,12,8,.66) 42%, rgba(3,12,8,.12) 76%), linear-gradient(0deg, rgba(3,12,8,.6), transparent 46%); }
 .site-header { position: fixed; z-index: 100; top: 0; left: 0; right: 0; width: 100%; max-width: none; height: 96px; margin: 0; padding-inline: max(24px, calc((100vw - 1200px)/2)); display: flex; align-items: center; justify-content: space-between; background: transparent; transition: background .25s ease, box-shadow .25s ease; }
@@ -39,8 +39,8 @@ img { max-width: 100%; display: block; }
 .brand-mark { width: 43px; height: 43px; border: 1px solid rgba(245,240,231,.55); border-radius: 50%; display: grid; place-items: center; font: 16px 'Prata', serif; letter-spacing: -.08em; }
 .brand-copy { display: grid; gap: 3px; }
 .brand-copy b { font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
-.brand-copy small { color: rgba(245,240,231,.55); font-size: 10px; letter-spacing: .07em; }
-.desktop-nav { display: flex; gap: 34px; font-size: 13px; color: rgba(245,240,231,.7); }
+.brand-copy small { color: rgba(245,240,231,.65); font-size: 12px; letter-spacing: .04em; }
+.desktop-nav { display: flex; gap: 30px; font-size: 14px; color: rgba(245,240,231,.78); }
 .desktop-nav a, .header-call { transition: color .2s ease; }
 .desktop-nav a:hover, .header-call:hover { color: #fff; }
 .header-call { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 9px; font-size: 14px; font-weight: 700; }
@@ -52,7 +52,7 @@ h1 { max-width: 900px; margin: 0; font: 400 clamp(56px, 7vw, 108px)/.98 'Prata',
 h1 em { color: var(--mint); font-style: italic; }
 .hero-lead { max-width: 610px; margin: 30px 0 0; color: rgba(245,240,231,.72); font-size: 17px; line-height: 1.7; animation: rise .8s .32s both; }
 .hero-actions { display: flex; gap: 12px; margin-top: 38px; animation: rise .8s .42s both; }
-.button { min-height: 54px; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; font-size: 14px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+.button { min-height: 54px; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; font-size: 15px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
 .button svg { width: 19px; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { background: #f3eee5; color: #07110d; }
@@ -121,6 +121,19 @@ h1 em { color: var(--mint); font-style: italic; }
 .extra-prices > div strong { color: var(--mint); white-space: nowrap; font: 26px 'Prata', serif; }
 .extra-prices > small { grid-column: 1 / -1; color: rgba(245,240,231,.64); font-size: 15px; line-height: 1.5; }
 
+.game-grid { display: grid; grid-template-columns: 1fr 1fr .84fr; gap: 16px; }
+.game-card, .game-info { min-width: 0; min-height: 360px; padding: 36px; display: flex; flex-direction: column; }
+.game-card { border: 1px solid rgba(157,216,184,.24); background: #112a20; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+.game-card:hover { transform: translateY(-5px); background: #16382a; border-color: rgba(157,216,184,.6); }
+.game-card > span, .game-info p { margin: 0; color: var(--mint); font-size: 14px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.game-card strong { margin: auto 0; font: 400 clamp(31px, 3vw, 44px)/1.12 'Prata', Georgia, serif; letter-spacing: -.04em; }
+.game-card small { display: inline-flex; align-items: center; gap: 8px; width: fit-content; color: var(--cream); font-size: 15px; font-weight: 800; }
+.game-card small svg { width: 18px; height: 18px; }
+.game-info { background: #16563f; }
+.game-info strong { margin: auto 0 18px; font: 400 clamp(30px, 2.5vw, 38px)/1.13 'Prata', Georgia, serif; }
+.game-info > span { color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.55; }
+.game-info a { width: fit-content; min-height: 44px; margin-top: 22px; display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; border-bottom: 1px solid rgba(255,255,255,.5); }
+
 .gallery-section { overflow: hidden; }
 .gallery-grid { display: grid; grid-template-columns: .9fr 1fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 14px; }
 .gallery-item { position: relative; overflow: hidden; border: 0; padding: 0; background: #102219; cursor: zoom-in; }
@@ -131,6 +144,26 @@ h1 em { color: var(--mint); font-style: italic; }
 .gallery-item > span { position: absolute; top: 17px; right: 17px; width: 37px; height: 37px; display: grid; place-items: center; border-radius: 50%; background: rgba(5,15,10,.62); backdrop-filter: blur(8px); opacity: 0; transform: translateY(6px); transition: .25s ease; }
 .gallery-item:hover > span { opacity: 1; transform: translateY(0); }
 .gallery-item > span svg { width: 16px; }
+
+.food-section.section-pad { padding-block: 0; background: #191d17; border-top: 1px solid rgba(233,207,162,.15); overflow: hidden; }
+.food-layout { min-height: max(620px, calc(100svh - 96px)); position: relative; display: flex; align-items: center; }
+.food-copy { position: relative; z-index: 2; width: min(570px, 52%); padding-block: 30px; }
+.food-copy .section-kicker { color: #d8b985; }
+.food-copy h2 { margin: 0; font: 400 clamp(42px, 4.7vw, 66px)/1.1 'Prata', Georgia, serif; letter-spacing: -.045em; }
+.food-copy h2 em { color: #d8b985; font-style: italic; }
+.food-copy .section-lead { max-width: 550px; color: rgba(245,240,231,.82); font-size: 17px; }
+.food-types { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+.food-types a { min-height: 44px; padding: 10px 15px; display: inline-flex; align-items: center; border: 1px solid rgba(216,185,133,.38); border-radius: 999px; color: #e9dfcd; font-size: 15px; font-weight: 700; transition: background .2s ease, border-color .2s ease; }
+.food-types a:hover { background: rgba(216,185,133,.12); border-color: #d8b985; }
+.food-actions { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 10px; }
+.food-actions .button-primary { background: #d8b985; }
+.food-actions .button-primary:hover { background: #f0d4a6; }
+.food-disclaimer { max-width: 550px; margin: 22px 0 0; color: rgba(245,240,231,.64); font-size: 14px; line-height: 1.6; }
+.food-disclaimer a { color: #e5c794; text-decoration: underline; text-underline-offset: 3px; }
+.food-photo { position: absolute; z-index: 0; inset: 0 -10vw 0 31%; margin: 0; }
+.food-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #191d17 0%, rgba(25,29,23,.91) 12%, rgba(25,29,23,.27) 46%, rgba(25,29,23,0) 75%); }
+.food-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
+.food-photo figcaption { position: absolute; z-index: 1; right: max(24px, 10vw); bottom: 22px; color: rgba(255,255,255,.7); font-size: 13px; }
 
 .booking-zone { background: #6f927f; overflow: hidden; }
 .booking-banner { min-height: 390px; padding-block: 76px; display: flex; align-items: center; justify-content: space-between; gap: 50px; color: #efe9df; position: relative; }
@@ -147,8 +180,9 @@ h1 em { color: var(--mint); font-style: italic; }
 .contacts-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; align-items: stretch; }
 .contact-lines { margin-top: 50px; display: grid; }
 .contact-lines > * { display: grid; grid-template-columns: 150px 1fr; align-items: baseline; padding: 25px 0; border-bottom: 1px solid var(--line); }
-.contact-lines > * > span { color: rgba(245,240,231,.56); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.contact-lines > * > span { color: rgba(245,240,231,.66); font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
 .contact-lines b { font-size: 18px; line-height: 1.45; }
+.contact-lines a b { display: inline-flex; align-items: center; gap: 6px; }
 .contact-hours > span { grid-template-columns: 76px max-content; font-size: 18px; }
 .contact-lines small { grid-column: 2; margin-top: 9px; color: rgba(245,240,231,.58); font-size: 14px; line-height: 1.6; }
 .contact-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 38px; }
@@ -179,6 +213,7 @@ h1 em { color: var(--mint); font-style: italic; }
 .lightbox { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 40px; background: rgba(2,8,5,.93); backdrop-filter: blur(12px); animation: menu-in .2s ease both; }
 .lightbox > button { position: absolute; top: 22px; right: 22px; background: transparent; border: 0; cursor: pointer; }
 .lightbox img { max-width: min(1100px, 92vw); max-height: 86vh; object-fit: contain; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--mint); outline-offset: 4px; }
 
 @keyframes hero-in { from { opacity: .45; transform: scale(1.1); } to { opacity: 1; transform: scale(1.02); } }
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
@@ -191,6 +226,9 @@ h1 em { color: var(--mint); font-style: italic; }
   .menu-button { display: grid; }
   .about { gap: 60px; }
   .price-grid { grid-template-columns: 1fr 1fr; }
+  .game-grid { grid-template-columns: 1fr 1fr; }
+  .game-info { grid-column: 1 / -1; min-height: 250px; }
+  .food-photo { inset: 0 -18vw 0 27%; }
   .price-note-card { grid-column: 1 / 3; min-height: 280px; }
   .price-note-card p { margin-top: auto; }
   .contacts-grid { gap: 55px; }
@@ -211,7 +249,7 @@ h1 em { color: var(--mint); font-style: italic; }
   .hero-content { height: 100%; padding-top: 78px; padding-bottom: 142px; }
   .eyebrow { font-size: 12px; line-height: 1.4; }
   h1 { font-size: clamp(46px, 14vw, 67px); line-height: 1.02; }
-  .hero-lead { font-size: 14px; line-height: 1.65; margin-top: 23px; }
+  .hero-lead { font-size: 16px; line-height: 1.6; margin-top: 23px; }
   .hero-actions { flex-direction: column; align-items: stretch; margin-top: 28px; }
   .hero-actions .button { width: 100%; }
   .hero-meta { left: 14px; right: 14px; bottom: 22px; flex-direction: column; gap: 9px; font-size: 15px; }
@@ -229,6 +267,9 @@ h1 em { color: var(--mint); font-style: italic; }
   .about-image-wrap { width: calc(100% - 18px); margin-left: 18px; }
   .split-heading { display: grid; gap: 24px; margin-bottom: 42px; }
   .price-grid { grid-template-columns: 1fr; }
+  .game-grid { grid-template-columns: 1fr; }
+  .game-card { min-height: 275px; padding: 30px; }
+  .game-info { grid-column: auto; min-height: 290px; padding: 30px; }
   .price-card { min-height: 450px; padding: 32px 28px; }
   .price-note-card { grid-column: auto; min-height: 330px; }
   .extra-prices { grid-template-columns: 1fr 1fr; padding: 28px; }
@@ -237,13 +278,21 @@ h1 em { color: var(--mint); font-style: italic; }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 330px 220px 220px; }
   .gallery-item-1 { grid-column: 1 / 3; grid-row: auto; }
   .gallery-item-2 { grid-column: auto; }
+  .food-layout { min-height: 0; display: flex; flex-direction: column; align-items: stretch; padding-top: 78px; padding-bottom: 0; }
+  .food-copy { width: 100%; padding: 0; }
+  .food-copy h2 { font-size: clamp(40px, 10vw, 58px); }
+  .food-actions { display: grid; grid-template-columns: 1fr; }
+  .food-actions .button { width: 100%; }
+  .food-photo { position: relative; inset: auto; width: calc(100% + 28px); aspect-ratio: 1.36; margin: 42px -14px 0; }
+  .food-photo::after { background: linear-gradient(0deg, rgba(0,0,0,.55), transparent 35%); }
+  .food-photo figcaption { right: 14px; bottom: 14px; max-width: 220px; text-align: right; }
   .booking-banner { min-height: 440px; padding-block: 58px; display: grid; }
   .booking-actions { flex-direction: column; }
   .booking-actions .button { width: 100%; min-width: 0; min-height: 66px; }
   .contacts-grid { grid-template-columns: 1fr; }
   .contact-lines { margin-top: 38px; }
   .contact-lines > * { grid-template-columns: 1fr; gap: 8px; align-items: start; padding: 22px 0; }
-  .contact-lines > * > span { font-size: 11px; }
+  .contact-lines > * > span { font-size: 13px; }
   .contact-lines b { font-size: 18px; }
   .contact-lines small { grid-column: 1; margin-top: 0; font-size: 14px; }
   .map-card { min-height: 420px; }

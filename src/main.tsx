@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  ArrowDown, ArrowUp, ArrowUpRight, Clock3, MapPin, Menu, Phone, X,
-} from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpRight, Clock3, MapPin, Menu, Phone, X } from 'lucide-react';
 import './styles.css';
 
 const base = import.meta.env.BASE_URL;
-const phoneHref = 'tel:+79163003036';
-const phoneLabel = '+7 (916) 300-30-36';
-const mapsHref = 'https://yandex.ru/maps/org/glavny/1753194133/?ll=37.851401%2C55.912297&z=14';
-const openingHours = [
-  { days: 'Вс–Чт', time: '14:00–02:00' },
-  { days: 'Пт–Сб', time: '14:00–04:00' },
-];
-
+const phoneHref = 'tel:+79998382917';
+const phoneLabel = '+7 (999) 838-29-17';
+const mapsHref = 'https://yandex.ru/maps/org/retro/17968240150/?ll=37.863951%2C55.920845&z=15';
+const menuHref = 'https://retro-korolev.ru/menu.html';
+const backupMenuHref = 'https://restaurantguru.com/Retro-Korolyov/menu';
 const gallery = [
-  { src: 'glavny-billiards-player.jpg', alt: 'Иллюстративная фотография игрока за бильярдным столом' },
-  { src: 'glavny-billiards-hall.jpg', alt: 'Иллюстративная фотография бильярдного зала' },
-  { src: 'glavny-billiards-shot.jpg', alt: 'Иллюстративная фотография удара по бильярдному шару' },
-  { src: 'glavny-billiards-friends.jpg', alt: 'Иллюстративная фотография дружеской партии' },
-  { src: 'glavny-billiards-balls.jpg', alt: 'Иллюстративная фотография шаров для русского бильярда' },
+  { src: 'glavny-billiards-player.jpg', alt: 'Иллюстрация: игрок за бильярдным столом' },
+  { src: 'glavny-billiards-hall.jpg', alt: 'Иллюстрация: бильярдный зал' },
+  { src: 'glavny-billiards-shot.jpg', alt: 'Иллюстрация: удар по бильярдному шару' },
+  { src: 'glavny-billiards-friends.jpg', alt: 'Иллюстрация: партия в бильярд' },
+  { src: 'glavny-billiards-balls.jpg', alt: 'Иллюстрация: шары для русского бильярда' },
 ];
 
 function App() {
@@ -29,10 +24,7 @@ function App() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMenuOpen(false);
-        setLightbox(null);
-      }
+      if (event.key === 'Escape') { setMenuOpen(false); setLightbox(null); }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
@@ -47,170 +39,74 @@ function App() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  return (
-    <main>
-      <header className={`site-header shell${headerScrolled ? ' site-header-scrolled' : ''}`}>
-        <a className="brand" href="#top" aria-label="Главный — наверх">
-          <span className="brand-mark">Г</span>
-          <span className="brand-copy"><b>Главный</b><small>Бильярдный клуб · Королёв</small></span>
-        </a>
-        <nav className="desktop-nav" aria-label="Основная навигация">
-          <a href="#club">О клубе</a><a href="#prices">Цены</a><a href="#gallery">Атмосфера</a><a href="#contacts">Контакты</a>
-        </nav>
-        <a className="header-call" href={phoneHref}><Phone size={18} /> <span>{phoneLabel}</span></a>
-        <button className="menu-button" aria-label="Открыть меню" onClick={() => setMenuOpen(true)}><Menu /></button>
-      </header>
+  return <main>
+    <header className={`site-header shell${headerScrolled ? ' site-header-scrolled' : ''}`}>
+      <a className="brand" href="#top" aria-label="Ретро — наверх"><span className="brand-mark">Р</span><span className="brand-copy"><b>Ретро</b><small>Кафе · Бильярд · Королёв</small></span></a>
+      <nav className="desktop-nav" aria-label="Основная навигация"><a href="#top">Главная</a><a href="#billiards">Бильярд</a><a href="#food">Кухня</a><a href="#contacts">Контакты</a></nav>
+      <a className="header-call" href={phoneHref} aria-label={`Позвонить в Ретро: ${phoneLabel}`}><Phone size={18} /> <span>{phoneLabel}</span></a>
+      <button className="menu-button" aria-label="Открыть меню" onClick={() => setMenuOpen(true)}><Menu /></button>
+    </header>
 
-      <section className="hero" style={{ '--hero-image': `url(${base}images/glavny-hero-action.jpg)` } as React.CSSProperties}>
+    <section className="hero" style={{ '--hero-image': `url(${base}images/glavny-hero-action.jpg)` } as React.CSSProperties}>
+      <div id="top" className="hero-content shell">
+        <p className="eyebrow"><span /> Кафе и бильярд в Королёве</p>
+        <h1>Встречаемся<br />в <em>«Ретро»</em></h1>
+        <p className="hero-lead">Сыграть партию, заказать ужин и провести вечер вместе — всё в одном месте на Полевом проезде.</p>
+        <div className="hero-actions"><a className="button button-primary" href={phoneHref}><Phone size={19} /> Забронировать</a><a className="button button-prices" href="#billiards">О бильярде</a><a className="button button-prices" href="#food">О кухне</a></div>
+        <div className="hero-meta"><a href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Полевой проезд, 4А</a><a href={mapsHref} target="_blank" rel="noreferrer"><Clock3 /> Часы работы — в Яндекс Картах</a></div>
+        <p className="hero-photo-note">Иллюстративное изображение</p>
+      </div>
+      <a className="scroll-hint" href="#billiards" aria-label="Листать к разделу о бильярде"><ArrowDown /></a>
+    </section>
 
-        <div id="top" className="hero-content shell">
-          <p className="eyebrow"><span /> Бильярдный клуб в Королёве</p>
-          <h1>Вечер начинается<br />с хорошей <em>партии</em></h1>
-          <p className="hero-lead">Русский бильярд и американский пул в клубе с характером. Для серьёзной партии, встречи с друзьями и хорошего вечера.</p>
-          <div className="hero-actions">
-            <a className="button button-prices" href="#prices">Цены</a>
-            <a className="button button-primary" href={phoneHref}><Phone size={19} /> Забронировать стол</a>
-          </div>
-          <div className="hero-meta">
-            <a href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> ул. Ильича, 11</a>
-            <div className="hero-hours"><Clock3 /><div className="hours-list" aria-label="Режим работы">
-              {openingHours.map(({ days, time }) => <span key={days}><b>{days}</b><strong>{time}</strong></span>)}
-            </div></div>
-          </div>
-          <p className="hero-photo-note">Иллюстрация — заменим на снимок клуба</p>
-        </div>
-        <a className="scroll-hint" href="#club" aria-label="Листать к информации о клубе"><ArrowDown /></a>
-      </section>
+    <section className="facts-zone" aria-label="Что есть в Ретро"><div className="quick-facts shell">
+      <div><small>Для игры</small><strong>Бильярд</strong><span>русский бильярд и американский пул</span></div>
+      <div><small>Для ужина</small><strong>Мангал</strong><span>мясо, рыба и овощи</span></div>
+      <div><small>Для компании</small><strong>Караоке</strong><span>вечер можно продолжить</span></div>
+      <div><small>С собой</small><strong>Еда навынос</strong><span>или доставка</span></div>
+    </div></section>
 
-      <section id="club" className="facts-zone" aria-label="Коротко о клубе">
-        <div className="quick-facts shell">
-          <div><small>В клубе</small><strong>7 столов</strong><span>6 русских и 1 для пула</span></div>
-          <div><small>Выбор игры</small><strong>2 формата</strong><span>русский бильярд и пул</span></div>
-          <div><small>Для игры</small><strong>Прокат кия</strong><span>кий можно взять в клубе</span></div>
-          <div><small>Ещё в клубе</small><strong>Дартс</strong><span>игра для компании</span></div>
-        </div>
-      </section>
+    <section id="billiards" className="about section-pad shell">
+      <div className="about-copy"><p className="section-kicker">Бильярд в Ретро</p><h2>Для партии —<br /><em>свой стол</em></h2>
+        <p className="section-lead">Любите размеренную игру или быстрый пул? В «Ретро» можно выбрать формат под настроение, а после партии остаться на ужин.</p>
+        <div className="feature-list"><div><b>Русский бильярд</b><small>Для тех, кто ценит точность и неспешную игру.</small></div><div><b>Американский пул</b><small>Более динамичный формат для встречи с друзьями.</small></div><div><b>Стол и ужин в одном месте</b><small>Бронируйте игру и спрашивайте свободное время по телефону.</small></div></div>
+      </div>
+      <div className="about-image-wrap"><img src={`${base}images/glavny-billiards-balls.jpg`} alt="Иллюстрация: бильярдные шары на столе" loading="lazy" /></div>
+    </section>
 
-      <section className="about section-pad shell">
-        <div className="about-copy">
-          <p className="section-kicker">Место для своей игры</p>
-          <h2>Здесь остаются<br />только <em>игроки</em><br /><em>и момент</em></h2>
-          <p className="section-lead">Спокойный вечер с друзьями, серьёзная партия или первый знакомый удар — в «Главном» есть место для любого темпа.</p>
-          <div className="feature-list">
-            <div><b>7 игровых столов</b><small>6 для русского бильярда и 1 для американского пула</small></div>
-            <div><b>Турниры</b><small>В клубе проводятся бильярдные соревнования</small></div>
-            <div><b>Дартс и прокат кия</b><small>Ещё один формат игры и возможность взять кий в клубе</small></div>
-            <div><b>Бар и Wi-Fi</b><small>Всё необходимое для длинной партии и хорошей компании</small></div>
-          </div>
-        </div>
-        <div className="about-image-wrap">
-          <img src={`${base}images/glavny-billiards-balls.jpg`} alt="Иллюстративная фотография шаров для русского бильярда" />
-        </div>
-      </section>
+    <section className="prices section-pad" aria-labelledby="game-heading"><div className="shell">
+      <div className="section-heading split-heading"><div><p className="section-kicker">Выбор игры</p><h2 id="game-heading">Во что <em>сыграем?</em></h2></div><p>Актуальные цены и свободные столы лучше уточнить напрямую: открытые источники не дают надёжного тарифа на игру.</p></div>
+      <div className="game-grid">
+        <a className="game-card" href="#booking" aria-label="Узнать о бронировании русского бильярда"><span>Классическая партия</span><strong>Русский<br />бильярд</strong><small>Узнать о бронировании <ArrowUpRight /></small></a>
+        <a className="game-card" href="#booking" aria-label="Узнать о бронировании американского пула"><span>Игра для компании</span><strong>Американский<br />пул</strong><small>Узнать о бронировании <ArrowUpRight /></small></a>
+        <div className="game-info"><p>Стоимость игры</p><strong>Уточните<br />по телефону</strong><span>Подскажут цену и помогут выбрать свободный стол.</span><a href={phoneHref}><Phone size={18} /> {phoneLabel}</a></div>
+      </div>
+    </div></section>
 
-      <section id="prices" className="prices section-pad">
-        <div className="shell">
-          <div className="section-heading split-heading">
-            <div><p className="section-kicker">Стоимость игры</p><h2>Выберите свой <em>стол</em></h2></div>
-            <p>Цены указаны как ориентир по открытой карточке клуба. Перед визитом рекомендуем уточнить актуальную стоимость по телефону.</p>
-          </div>
+    <section id="gallery" className="gallery-section section-pad shell"><div className="section-heading split-heading"><div><p className="section-kicker">Атмосфера игры</p><h2>Время для <em>партии</em></h2></div><p>Пока здесь иллюстративные кадры бильярда, не фотографии «Ретро». Позже их можно заменить снимками заведения.</p></div>
+      <div className="gallery-grid">{gallery.map((image, index) => <button key={image.src} className={`gallery-item gallery-item-${index + 1}`} onClick={() => setLightbox(index)} aria-label={`Открыть фото: ${image.alt}`}><img src={`${base}images/${image.src}`} alt={image.alt} loading="lazy" /><span><ArrowUpRight /></span></button>)}</div>
+    </section>
 
-          <div className="price-grid">
-            <a className="price-card price-card-featured" href="#booking" aria-label="Перейти к бронированию стола для русского бильярда">
-              <div><p className="price-label">Русский бильярд</p><h3><span>600–1000</span><small>₽ / час</small></h3><p className="price-caption">Ориентировочная стоимость</p></div>
-              <ul><li>6 столов для русского бильярда</li><li>Стоимость зависит от времени и выбранного стола</li><li>Точную цену уточните перед визитом</li></ul>
-            </a>
+    <section id="food" className="food-section section-pad"><div className="shell food-layout">
+      <div className="food-copy"><p className="section-kicker">Кухня Ретро</p><h2>Партия сыграна.<br /><em>Ужин ждёт.</em></h2><p className="section-lead">Здесь готовят блюда с мангала, салаты, горячее и закуски. Можно прийти поесть, собрать компанию за столом или продолжить вечер после бильярда.</p>
+        <div className="food-types" aria-label="Разделы меню"><a href="https://retro-korolev.ru/menu/kebabs.html" target="_blank" rel="noreferrer">Мангал и шашлык</a><a href="https://retro-korolev.ru/menu/salads.html" target="_blank" rel="noreferrer">Салаты</a><a href="https://retro-korolev.ru/menu/lunch.html" target="_blank" rel="noreferrer">Горячие блюда</a><a href="https://retro-korolev.ru/menu/snacks-slicing-sandwiches.html" target="_blank" rel="noreferrer">Закуски</a></div>
+        <div className="food-actions"><a className="button button-primary" href={menuHref} target="_blank" rel="noreferrer">Посмотреть меню <ArrowUpRight size={18} /></a><a className="button button-ghost" href={phoneHref}><Phone size={18} /> Уточнить по телефону</a></div>
+        <p className="food-disclaimer">Меню — на официальном сайте «Ретро». Если он не загрузится, есть <a href={backupMenuHref} target="_blank" rel="noreferrer">запасная ссылка</a>; цены и наличие блюд уточняйте по телефону.</p>
+      </div>
+      <figure className="food-photo"><img src={`${base}images/retro-food-grill.jpg`} alt="Иллюстрация: шашлык, овощи, салат и хлеб на столе" loading="lazy" /><figcaption>Иллюстративное изображение, не фото заведения</figcaption></figure>
+    </div></section>
 
-            <a className="price-card" href="#booking" aria-label="Перейти к бронированию стола для американского пула">
-              <div><p className="price-label">Американский пул</p><h3><span>500</span><small>₽ / час</small></h3><p className="price-caption">Ориентировочная стоимость</p></div>
-              <ul><li>1 стол для американского пула</li><li>Подходит для дружеской партии</li><li>Точную цену уточните перед визитом</li></ul>
-            </a>
+    <section id="booking" className="booking-zone"><div className="booking-banner shell"><div><p className="section-kicker">Вечер начинается здесь</p><h2>Осталось выбрать <em>время</em></h2></div><div className="booking-actions"><a className="button button-primary" href={phoneHref}><Phone /> Позвонить и забронировать</a><a className="button button-outline-dark" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a></div></div></section>
 
-            <a className="price-note-card" href="#booking" aria-label="Перейти к бронированию и уточнить стоимость">
-              <p>Перед визитом</p><strong>Уточните цену</strong>
-              <span>Актуальную стоимость и свободные столы подскажут по телефону</span>
-              <small>Нажмите, чтобы перейти к бронированию</small>
-            </a>
-          </div>
-          <div className="extra-prices" aria-label="Дополнительные услуги">
-            <p className="extra-prices-heading">Дополнительно</p>
-            <div><span>Прокат кия</span><strong>200 ₽</strong></div>
-            <div><span>Дартс</span><strong>300 ₽</strong></div>
-            <small>Цены из меню клуба, которое давно не обновлялось. Уточните их при бронировании.</small>
-          </div>
-        </div>
-      </section>
+    <section id="contacts" className="contacts section-pad"><div className="shell contacts-grid"><div className="contacts-copy"><p className="section-kicker">Контакты</p><h2>До встречи<br /><em>в Ретро</em></h2><div className="contact-lines"><a href={phoneHref}><span>Телефон и бронь</span><b>{phoneLabel}</b></a><a href={mapsHref} target="_blank" rel="noreferrer"><span>Режим работы</span><b>Посмотреть актуальные часы <ArrowUpRight size={17} /></b></a><div><span>Адрес</span><b>Королёв, Полевой проезд, 4А</b></div></div><div className="contact-buttons"><a className="button button-primary" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a><a className="button button-ghost" href={phoneHref}><Phone /> Позвонить</a></div></div>
+      <a className="map-card" href={mapsHref} target="_blank" rel="noreferrer" aria-label="Открыть Ретро в Яндекс Картах"><div className="map-grid-lines" /><span className="map-road road-one" /><span className="map-road road-two" /><span className="map-road road-three" /><span className="map-pin"><MapPin /></span><span className="map-label"><small>Кафе и бильярд «Ретро»</small><b>Полевой проезд, 4А</b></span><span className="map-link">Открыть в картах <ArrowUpRight /></span></a>
+    </div></section>
 
-      <section id="gallery" className="gallery-section section-pad shell">
-        <div className="section-heading split-heading">
-          <div><p className="section-kicker">Иллюстративные фотографии</p><h2>Почувствуйте <em>атмосферу</em></h2></div>
-          <p>После получения материалов мы заменим эти иллюстрации на настоящие фотографии клуба «Главный».</p>
-        </div>
-        <div className="gallery-grid">
-          {gallery.map((image, index) => (
-            <button key={image.src} className={`gallery-item gallery-item-${index + 1}`} onClick={() => setLightbox(index)} aria-label={`Открыть фото: ${image.alt}`}>
-              <img src={`${base}images/${image.src}`} alt={image.alt} loading="lazy" />
-              <span><ArrowUpRight /></span>
-            </button>
-          ))}
-        </div>
-      </section>
+    <footer className="footer shell"><a className="brand" href="#top"><span className="brand-mark">Р</span><span className="brand-copy"><b>Ретро</b><small>Кафе · Бильярд · Королёв</small></span></a><p>© {new Date().getFullYear()} Кафе и бильярд «Ретро»</p><a className="footer-phone" href={phoneHref}>{phoneLabel}</a><a className="back-to-top" href="#top"><ArrowUp /> Наверх</a></footer>
 
-      <section id="booking" className="booking-zone">
-        <div className="booking-banner shell">
-          <div><p className="section-kicker">Стол свободен</p><h2>Осталось выбрать <em>время</em></h2></div>
-          <div className="booking-actions">
-            <a className="button button-primary" href={phoneHref}><Phone /> Позвонить для брони</a>
-            <a className="button button-outline-dark" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacts" className="contacts section-pad">
-        <div className="shell contacts-grid">
-          <div className="contacts-copy">
-            <p className="section-kicker">Контакты</p><h2>Увидимся<br /><em>за столом</em></h2>
-            <div className="contact-lines">
-              <a href={phoneHref}><span>Телефон</span><b>{phoneLabel}</b></a>
-              <div><span>Режим работы</span><div className="hours-list contact-hours">
-                {openingHours.map(({ days, time }) => <span key={days}><b>{days}</b><strong>{time}</strong></span>)}
-              </div></div>
-              <div><span>Адрес</span><b>Королёв, улица Ильича, 11</b></div>
-            </div>
-            <div className="contact-buttons">
-              <a className="button button-primary" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a>
-              <a className="button button-ghost" href={phoneHref}><Phone /> Позвонить</a>
-            </div>
-          </div>
-          <a className="map-card" href={mapsHref} target="_blank" rel="noreferrer" aria-label="Открыть клуб в Яндекс Картах">
-            <div className="map-grid-lines" />
-            <span className="map-road road-one" /><span className="map-road road-two" /><span className="map-road road-three" />
-            <span className="map-pin"><MapPin /></span>
-            <span className="map-label"><small>Бильярдный клуб «Главный»</small><b>ул. Ильича, 11</b></span>
-            <span className="map-link">Открыть в картах <ArrowUpRight /></span>
-          </a>
-        </div>
-      </section>
-
-      <footer className="footer shell">
-        <a className="brand" href="#top"><span className="brand-mark">Г</span><span className="brand-copy"><b>Главный</b><small>Бильярдный клуб · Королёв</small></span></a>
-        <p>© {new Date().getFullYear()} Бильярдный клуб «Главный»</p>
-        <a className="footer-phone" href={phoneHref}>{phoneLabel}</a>
-        <a className="back-to-top" href="#top"><ArrowUp /> Наверх</a>
-      </footer>
-
-      {menuOpen && <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Меню">
-        <button onClick={closeMenu} aria-label="Закрыть меню"><X /></button>
-        <nav><a href="#club" onClick={closeMenu}>О клубе</a><a href="#prices" onClick={closeMenu}>Цены</a><a href="#gallery" onClick={closeMenu}>Атмосфера</a><a href="#contacts" onClick={closeMenu}>Контакты</a></nav>
-        <a className="button button-primary" href={phoneHref}><Phone /> Забронировать стол</a>
-      </div>}
-
-      {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" onClick={() => setLightbox(null)}>
-        <button aria-label="Закрыть фотографию"><X /></button>
-        <img src={`${base}images/${gallery[lightbox].src}`} alt={gallery[lightbox].alt} onClick={(event) => event.stopPropagation()} />
-      </div>}
-    </main>
-  );
+    {menuOpen && <div className="mobile-menu" role="dialog" aria-modal="true" aria-label="Меню"><button onClick={closeMenu} aria-label="Закрыть меню"><X /></button><nav><a href="#top" onClick={closeMenu}>Главная</a><a href="#billiards" onClick={closeMenu}>Бильярд</a><a href="#food" onClick={closeMenu}>Кухня</a><a href="#contacts" onClick={closeMenu}>Контакты</a></nav><a className="button button-primary" href={phoneHref}><Phone /> Позвонить и забронировать</a></div>}
+    {lightbox !== null && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" onClick={() => setLightbox(null)}><button aria-label="Закрыть фотографию"><X /></button><img src={`${base}images/${gallery[lightbox].src}`} alt={gallery[lightbox].alt} onClick={(event) => event.stopPropagation()} /></div>}
+  </main>;
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
