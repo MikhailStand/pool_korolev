@@ -41,10 +41,14 @@
 .menu-group-hookah { --group-color: #30383b; --group-accent: #e8d6ba; }
 .menu-group-heading { position: relative; isolation: isolate; min-height: 225px; padding: 42px 48px; display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 48px; overflow: hidden; background: var(--group-color); background: radial-gradient(circle at 87% 18%, color-mix(in srgb, var(--group-accent) 14%, transparent), transparent 36%), var(--group-color); color: #f7f3ea; }
 .menu-group-art { position: absolute; z-index: -1; right: 28px; top: -13px; color: var(--group-accent); opacity: .11; font: 400 clamp(70px, 8vw, 132px)/1 'Prata', Georgia, serif; letter-spacing: -.08em; white-space: nowrap; pointer-events: none; }
+.menu-group-heading > div:first-of-type { min-width: 0; }
 .menu-group-heading .menu-kicker { color: var(--group-accent); }
-.menu-group-heading h2 { max-width: 700px; margin: 0; font: clamp(39px, 4.3vw, 62px)/1.1 'Prata', Georgia, serif; letter-spacing: -.045em; text-wrap: balance; }
-.menu-group-heading > p { position: relative; flex: 0 1 300px; margin: 0 0 6px; color: rgba(247,243,234,.88); font-size: 17px; line-height: 1.65; }
-.menu-subsection { margin-top: 54px; }
+.menu-group-heading h2 { max-width: 700px; margin: 0; font: clamp(43px, 4.7vw, 68px)/1.08 'Prata', Georgia, serif; letter-spacing: -.045em; text-wrap: balance; }
+.menu-group-heading-side { position: relative; flex: 0 1 300px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.menu-group-icon { width: 64px; height: 64px; flex: none; display: grid; place-items: center; transform: rotate(-6deg); background: var(--group-accent); color: #14201a; box-shadow: 6px 6px 0 rgba(0,0,0,.19); }
+.menu-group-icon svg { width: 41px; height: 41px; stroke-width: 2.2; }
+.menu-group-heading-side p { margin: 0 0 6px; color: rgba(247,243,234,.88); font-size: 17px; line-height: 1.65; }
+.menu-subsection { margin-top: 54px; scroll-margin-top: 100px; }
 .menu-subsection:first-of-type { margin-top: 0; }
 .menu-subsection h3 { margin: 0 0 10px; padding-bottom: 19px; border-bottom: 2px solid #94b6a0; color: #205a3d; font-size: clamp(22px, 2.2vw, 29px); line-height: 1.3; }
 .menu-item-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; }
@@ -64,20 +68,24 @@
 .drink-kind-heading + .menu-subsection { margin-top: 35px; }
 .drink-kind-alcohol .drink-kind-heading { border-color: #9b785d; background: #ede2d4; }
 .drink-kind-alcohol .drink-kind-heading p { color: #7e5944; }
-.drink-cocktail-note { margin-top: 22px; padding: 25px 30px; display: flex; justify-content: space-between; align-items: center; gap: 24px; border: 1px solid rgba(64,75,54,.17); background: rgba(255,255,255,.55); }
-.drink-cocktail-note strong { font-size: 20px; }
-.drink-cocktail-note p { max-width: 590px; margin: 5px 0 0; color: #526056; font-size: 16px; line-height: 1.6; }
-.drink-cocktail-note a { flex: none; min-height: 48px; display: inline-flex; align-items: center; gap: 7px; color: #1d6445; font-size: 15px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
-.hookah-feature { display: grid; grid-template-columns: 1.2fr .8fr; min-height: 350px; background: #faf8f2; border: 1px solid rgba(35,65,54,.16); }
+.menu-source-note { margin: 24px 0 0; color: #526056; font-size: 14px; line-height: 1.55; }
+.menu-source-note a { display: inline-flex; align-items: center; gap: 3px; color: #1d6445; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.menu-source-note + .menu-subsection { margin-top: 48px; }
+.hookah-feature { display: grid; grid-template-columns: 1.15fr .85fr; min-height: 390px; background: #faf8f2; border: 1px solid rgba(35,65,54,.16); }
 .hookah-feature > div { padding: 44px 48px; }
 .hookah-feature > div:first-child { display: flex; flex-direction: column; align-items: flex-start; }
 .hookah-feature .menu-kicker { color: #607969; }
-.hookah-feature h3 { margin: 0; font: 400 clamp(44px, 5vw, 68px)/1.1 'Prata', Georgia, serif; letter-spacing: -.045em; }
-.hookah-feature > div:first-child > p:not(.menu-kicker) { max-width: 530px; margin: 22px 0 0; color: #45564b; font-size: 17px; line-height: 1.7; }
+.hookah-price-list { width: 100%; display: grid; border-top: 1px solid #c6d2c5; }
+.hookah-price-list > div { min-height: 96px; padding-block: 22px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-bottom: 1px solid #c6d2c5; }
+.hookah-price-list span { color: #1e3024; font-size: 18px; font-weight: 800; line-height: 1.4; }
+.hookah-price-list span small { display: block; margin-top: 5px; color: #59695b; font-size: 14px; font-weight: 600; }
+.hookah-price-list strong { flex: none; color: #174c32; font: 400 29px/1.2 'Prata', Georgia, serif; white-space: nowrap; }
 .hookah-feature > div:first-child > a { min-height: 48px; margin-top: auto; display: inline-flex; align-items: center; gap: 7px; color: #1f6847; font-size: 15px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
 .hookah-feature > div:last-child { display: flex; flex-direction: column; align-items: flex-start; background: #e8e4d9; }
 .hookah-feature > div:last-child > span { color: #466c56; font-size: 14px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-.hookah-feature > div:last-child > strong { margin: auto 0; font: 400 clamp(35px, 4vw, 51px)/1.13 'Prata', Georgia, serif; letter-spacing: -.045em; }
+.hookah-options { width: 100%; margin: auto 0; display: grid; }
+.hookah-options > div { min-height: 58px; display: flex; justify-content: space-between; align-items: center; gap: 14px; border-bottom: 1px solid #c9c9bd; font-size: 18px; }
+.hookah-options > div strong { font-size: 19px; white-space: nowrap; }
 .hookah-feature .button { min-height: 56px; background: #173f2d; color: #fff; }
 .hookah-feature .button:hover { background: #246546; }
 
@@ -112,7 +120,11 @@
   .menu-group { padding-block: 70px 78px; scroll-margin-top: 70px; }
   .menu-group-heading { min-height: 0; display: block; padding: 32px 28px; margin-bottom: 42px; }
   .menu-group-art { top: auto; bottom: -6px; right: 12px; font-size: 70px; opacity: .07; }
-  .menu-group-heading > p { margin-top: 24px; font-size: 16px; }
+  .menu-group-heading h2 { font-size: clamp(39px, 9vw, 57px); }
+  .menu-group-heading-side { margin-top: 26px; flex-direction: row; align-items: center; gap: 22px; }
+  .menu-group-icon { width: 54px; height: 54px; }
+  .menu-group-icon svg { width: 34px; height: 34px; }
+  .menu-group-heading-side p { font-size: 16px; }
   .menu-subsection { margin-top: 45px; }
   .menu-item-grid { grid-template-columns: 1fr; }
   .menu-item { min-height: 70px; padding-block: 17px; }
@@ -121,12 +133,12 @@
   .drink-kind { scroll-margin-top: 86px; }
   .drink-kind + .drink-kind { margin-top: 58px; }
   .drink-kind-heading { padding: 22px 24px; }
-  .drink-cocktail-note { display: block; padding: 22px 24px; }
-  .drink-cocktail-note a { margin-top: 18px; }
   .hookah-feature { grid-template-columns: 1fr; }
   .hookah-feature > div { padding: 33px 28px; }
   .hookah-feature > div:first-child > a { margin-top: 24px; }
-  .hookah-feature > div:last-child { min-height: 250px; }
+  .hookah-feature > div:last-child { min-height: 300px; }
+  .hookah-price-list > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+  .hookah-price-list strong { font-size: 26px; }
   .menu-end { padding-block: 78px; }
   .menu-end-inner { display: block; }
   .menu-end .button { margin-top: 30px; width: 100%; }
@@ -139,5 +151,7 @@
   .menu-hero h1 { font-size: 42px; }
   .menu-item { gap: 10px; }
   .menu-item-price { font-size: 17px; }
+  .hookah-price-list span { font-size: 17px; }
+  .hookah-price-list strong { font-size: 24px; }
   .hookah-feature .button { width: 100%; padding-inline: 16px; font-size: 15px; }
 }
