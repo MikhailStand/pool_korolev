@@ -61,7 +61,7 @@ function App() {
         <button className="menu-button" aria-label="Открыть меню" onClick={() => setMenuOpen(true)}><Menu /></button>
       </header>
 
-      <section className="hero" style={{ '--hero-image': `url(${base}images/5ba279979f24eab771fc75c7_gb.jpg)` } as React.CSSProperties}>
+      <section className="hero" style={{ '--hero-image': `url(${base}images/glavny-hero-action.jpg)` } as React.CSSProperties}>
 
         <div id="top" className="hero-content shell">
           <p className="eyebrow"><span /> Бильярдный клуб в Королёве</p>
@@ -77,7 +77,7 @@ function App() {
               {openingHours.map(({ days, time }) => <span key={days}><b>{days}</b><strong>{time}</strong></span>)}
             </div></div>
           </div>
-          <p className="hero-photo-note">Временное фото — заменим на снимок клуба</p>
+          <p className="hero-photo-note">Иллюстрация — заменим на снимок клуба</p>
         </div>
         <a className="scroll-hint" href="#club" aria-label="Листать к информации о клубе"><ArrowDown /></a>
       </section>
