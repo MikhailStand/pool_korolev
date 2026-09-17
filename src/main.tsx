@@ -7,6 +7,8 @@ const base = import.meta.env.BASE_URL;
 const phoneHref = 'tel:+79998382917';
 const phoneLabel = '+7 (999) 838-29-17';
 const mapsHref = 'https://yandex.ru/maps/org/retro/17968240150/?ll=37.863951%2C55.920845&z=15';
+const hoursSourceHref = 'https://tomesto.ru/moskva/places/retro';
+const deliveryHref = 'https://retro-korolev.ru/contact.html#delivery';
 const menuHref = 'https://retro-korolev.ru/menu.html';
 const ourMenuHref = `${base}menu.html`;
 const gallery = [
@@ -16,6 +18,10 @@ const gallery = [
   { src: 'glavny-billiards-friends.jpg', alt: 'Иллюстрация: партия в бильярд' },
   { src: 'glavny-billiards-balls.jpg', alt: 'Иллюстрация: шары для русского бильярда' },
 ];
+
+function Hours() {
+  return <div className="hours-list"><span><b>Пн</b><strong>16:00–01:00</strong></span><span><b>Вт–Чт, Вс</b><strong>14:00–03:00</strong></span><span><b>Пт–Сб</b><strong>14:00–06:00</strong></span></div>;
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,7 +59,7 @@ function App() {
         <h1>Встречаемся<br />в <em>«Ретро»</em></h1>
         <p className="hero-lead">Сыграть партию, заказать ужин и провести вечер вместе — всё в одном месте на Полевом проезде.</p>
         <div className="hero-actions"><a className="button button-primary" href={phoneHref}><Phone size={19} /> Забронировать</a><a className="button button-prices" href="#billiards">О бильярде</a><a className="button button-prices" href="#food">О кухне</a></div>
-        <div className="hero-meta"><a href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Полевой проезд, 4А</a><a href={mapsHref} target="_blank" rel="noreferrer"><Clock3 /> Часы работы — в Яндекс Картах</a></div>
+        <div className="hero-meta"><a href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Полевой проезд, 4А</a><div className="hero-hours"><Clock3 /><Hours /></div></div>
         <p className="hero-photo-note">Иллюстративное изображение</p>
       </div>
       <a className="scroll-hint" href="#billiards" aria-label="Листать к разделу о бильярде"><ArrowDown /></a>
@@ -84,22 +90,25 @@ function App() {
       <p className="game-source">Источник ориентиров: <a href="https://visavis-club.ru/" target="_blank" rel="noreferrer">прайс клуба «Визави» <ArrowUpRight size={15} /></a>. «Визави» и «Ретро» — разные заведения по одному адресу.</p>
     </div></section>
 
-    <section id="gallery" className="gallery-section section-pad shell"><div className="section-heading split-heading"><div><p className="section-kicker">Атмосфера игры</p><h2>Время для <em>партии</em></h2></div><p>Пока здесь иллюстративные кадры бильярда, не фотографии «Ретро». Позже их можно заменить снимками заведения.</p></div>
+    <section id="gallery" className="gallery-section section-pad shell"><div className="section-heading split-heading"><div><p className="section-kicker">Атмосфера игры</p><h2>Время для <em>партии</em></h2></div><p>Пока здесь иллюстративные кадры бильярда, не фотографии «Ретро». <a className="gallery-source-link" href="https://retro-korolev.ru/gallery.html" target="_blank" rel="noreferrer">Посмотреть галерею кафе <ArrowUpRight size={17} /></a></p></div>
       <div className="gallery-grid">{gallery.map((image, index) => <button key={image.src} className={`gallery-item gallery-item-${index + 1}`} onClick={() => setLightbox(index)} aria-label={`Открыть фото: ${image.alt}`}><img src={`${base}images/${image.src}`} alt={image.alt} loading="lazy" /><span><ArrowUpRight /></span></button>)}</div>
     </section>
 
     <section id="food" className="food-section section-pad"><div className="shell food-layout">
-      <div className="food-copy"><p className="section-kicker">Кухня Ретро</p><h2>Партия сыграна.<br /><em>Ужин ждёт.</em></h2><p className="section-lead">Здесь готовят блюда с мангала, салаты, горячее и закуски. Можно прийти поесть, собрать компанию за столом или продолжить вечер после бильярда.</p>
-        <div className="food-types" aria-label="Разделы меню"><a href={`${ourMenuHref}#grill`}>Мангал и шашлык</a><a href={`${ourMenuHref}#salads`}>Салаты</a><a href={`${ourMenuHref}#hot`}>Горячие блюда</a><a href={`${ourMenuHref}#snacks`}>Закуски</a><a href={`${ourMenuHref}#hookah`}>Кальян</a></div>
+      <div className="food-copy"><p className="section-kicker">О кафе и кухне</p><h2>После партии —<br /><em>за стол.</em></h2><p className="section-lead">«Ретро» — не только бильярд. Здесь можно поужинать вдвоём, встретиться с друзьями или собрать компанию на праздник. В меню — блюда с мангала, домашняя кухня и бар.</p>
+        <div className="cafe-highlights" aria-label="В кафе"><div><strong>3 зала</strong><span>для встреч и праздников</span></div><div><strong>Мангал</strong><span>мясо, рыба и овощи</span></div><div><strong>Банкеты</strong><span>для большой компании</span></div></div>
+        <div className="food-types" aria-label="Разделы меню"><a href={`${ourMenuHref}#grill`}>Мангал и шашлык</a><a href={`${ourMenuHref}#salads`}>Салаты</a><a href={`${ourMenuHref}#snacks`}>Закуски</a><a href={`${ourMenuHref}#hookah`}>Кальян</a></div>
         <div className="food-actions"><a className="button button-primary" href={ourMenuHref}>Посмотреть меню <ArrowUpRight size={18} /></a><a className="button button-ghost" href={phoneHref}><Phone size={18} /> Уточнить по телефону</a></div>
         <p className="food-disclaimer">Меню на отдельной странице собрано по данным <a href={menuHref} target="_blank" rel="noreferrer">сайта «Ретро»</a>. Цены и наличие блюд уточняйте по телефону.</p>
       </div>
       <figure className="food-photo"><img src={`${base}images/retro-food-grill.jpg`} alt="Иллюстрация: шашлык, овощи, салат и хлеб на столе" loading="lazy" /><figcaption>Иллюстративное изображение, не фото заведения</figcaption></figure>
     </div></section>
 
+    <section id="delivery" className="delivery-section" aria-labelledby="delivery-heading"><div className="shell delivery-layout"><div className="delivery-heading"><p className="section-kicker">Доставка из «Ретро»</p><h2 id="delivery-heading">Ужин — <em>к вам домой.</em></h2><p>Шашлык и другие блюда можно заказать с доставкой или забрать самостоятельно. Условия ниже — с официального сайта кафе.</p><div className="delivery-actions"><a className="button button-primary" href={phoneHref}><Phone size={19} /> Заказать по телефону</a><a className="delivery-map-link" href={deliveryHref} target="_blank" rel="noreferrer">Проверить зону доставки <ArrowUpRight size={18} /></a></div></div><div className="delivery-details"><div><span>Минимальный заказ</span><strong>2 500 ₽</strong></div><div><span>Стоимость доставки</span><strong>300–1 200 ₽</strong></div><div><span>Бесплатно в зоне доставки</span><strong>от 3 500 ₽</strong></div><div><span>Доставляют</span><strong>ежедневно, 12:00–24:00</strong></div><p>Заказы принимают до 23:00. Доставка за пределы зоны рассчитывается по тарифам Яндекс Go; стоимость и доступность уточните при заказе.</p></div></div></section>
+
     <section id="booking" className="booking-zone"><div className="booking-banner shell"><div><p className="section-kicker">Вечер начинается здесь</p><h2>Осталось выбрать <em>время</em></h2></div><div className="booking-actions"><a className="button button-primary" href={phoneHref}><Phone /> Позвонить и забронировать</a><a className="button button-outline-dark" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a></div></div></section>
 
-    <section id="contacts" className="contacts section-pad"><div className="shell contacts-grid"><div className="contacts-copy"><p className="section-kicker">Контакты</p><h2>До встречи<br /><em>в Ретро</em></h2><div className="contact-lines"><a href={phoneHref}><span>Телефон и бронь</span><b>{phoneLabel}</b></a><a href={mapsHref} target="_blank" rel="noreferrer"><span>Режим работы</span><b>Посмотреть актуальные часы <ArrowUpRight size={17} /></b></a><div><span>Адрес</span><b>Королёв, Полевой проезд, 4А</b></div></div><div className="contact-buttons"><a className="button button-primary" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a><a className="button button-ghost" href={phoneHref}><Phone /> Позвонить</a></div></div>
+    <section id="contacts" className="contacts section-pad"><div className="shell contacts-grid"><div className="contacts-copy"><p className="section-kicker">Контакты</p><h2>До встречи<br /><em>в Ретро</em></h2><div className="contact-lines"><a href={phoneHref}><span>Телефон и бронь</span><b>{phoneLabel}</b></a><div className="contact-hours-row"><span>Режим работы</span><Hours /><small>Расписание по открытым данным. Перед поздним визитом лучше позвонить. <a href={hoursSourceHref} target="_blank" rel="noreferrer">Источник <ArrowUpRight size={14} /></a></small></div><div><span>Адрес</span><b>Королёв, Полевой проезд, 4А</b></div></div><div className="contact-buttons"><a className="button button-primary" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a><a className="button button-ghost" href={phoneHref}><Phone /> Позвонить</a></div></div>
       <a className="map-card" href={mapsHref} target="_blank" rel="noreferrer" aria-label="Открыть Ретро в Яндекс Картах"><div className="map-grid-lines" /><span className="map-road road-one" /><span className="map-road road-two" /><span className="map-road road-three" /><span className="map-pin"><MapPin /></span><span className="map-label"><small>Кафе и бильярд «Ретро»</small><b>Полевой проезд, 4А</b></span><span className="map-link">Открыть в картах <ArrowUpRight /></span></a>
     </div></section>
 

@@ -64,7 +64,7 @@ const groups = [
     description: 'Лимонады и коктейли, чай, кофе, соки и пиво.',
     art: 'НАПИТКИ',
     icon: <GlassWater />,
-    titles: ['НАПИТКИ', 'ЧАЙ (900 мл.)', 'КОФЕ', 'ЛИМОНАДЫ (1 л.)', 'КОКТЕЙЛИ И ЛИМОНАДЫ (БАР)', 'СОКИ RICH (200 мл./1 л.) в ассортименте', 'МОЛОЧНЫЕ КОКТЕЙЛИ (400 мл.)', 'НАПИТКИ ГАЗИРОВАННЫЕ (в стекле) 330 мл.', 'ПИВО'],
+    titles: ['НАПИТКИ', 'ЧАЙ (900 мл.)', 'КОФЕ', 'ЛИМОНАДЫ (1 л.)', 'СОКИ RICH (200 мл./1 л.) в ассортименте', 'МОЛОЧНЫЕ КОКТЕЙЛИ (400 мл.)', 'НАПИТКИ ГАЗИРОВАННЫЕ (в стекле) 330 мл.', 'ПИВО'],
   },
   {
     id: 'hookah', label: 'Кальян', kicker: 'Для отдыха', title: 'Кальян',
@@ -136,8 +136,8 @@ function MenuPage() {
           {group.id === 'hookah' && <div className="hookah-feature"><div><p className="menu-kicker">Кальян и табак</p><div className="hookah-price-list"><div><span>Классический на чаше</span><strong>1 300 ₽</strong></div><div><span>Табак Darkside <small>в ассортименте</small></span><strong>1 800 ₽</strong></div></div><a href="https://retro-korolev.ru/menu/hookah.html" target="_blank" rel="noreferrer">Цены на сайте «Ретро» <ArrowUpRight size={18} /></a></div><div><span>Наполнение колбы</span><div className="hookah-options"><div><span>Молоко</span><strong>+300 ₽</strong></div><div><span>Сок</span><strong>+300 ₽</strong></div><div><span>Вино</span><strong>+500 ₽</strong></div></div><a className="button button-primary" href={phoneHref}><Phone size={19} /> Спросить и забронировать</a></div></div>}
           {group.id === 'drinks' ? <>
             <div className="drink-jump" aria-label="Виды напитков"><a href="#soft-drinks">Безалкогольные</a><a href="#alcohol-drinks">Алкогольные</a></div>
-            <div className="drink-kind" id="soft-drinks"><div className="drink-kind-heading"><p>Чай, кофе, лимонады и другое</p><h3>Безалкогольные</h3></div>{group.titles.filter((title) => title !== 'ПИВО').map((title) => <React.Fragment key={title}><MenuSectionBlock title={title} items={title === 'КОКТЕЙЛИ И ЛИМОНАДЫ (БАР)' ? barCocktails : undefined} />{title === 'КОКТЕЙЛИ И ЛИМОНАДЫ (БАР)' && <p className="menu-source-note">Коктейли и лимонады — по <a href="https://retro-korolev.ru/menu/bar.html" target="_blank" rel="noreferrer">барному меню «Ретро» <ArrowUpRight size={15} /></a>. Другие варианты можно уточнить в кафе.</p>}</React.Fragment>)}<MenuSectionBlock title="ПИВО" displayTitle="БЕЗАЛКОГОЛЬНОЕ ПИВО" items={sections.get('ПИВО')?.items.filter((item) => item.name.includes('«0»'))} /></div>
-            <div className="drink-kind drink-kind-alcohol" id="alcohol-drinks"><div className="drink-kind-heading"><p>Барное меню</p><h3>Алкогольные</h3></div><MenuSectionBlock title="ПИВО" items={sections.get('ПИВО')?.items.filter((item) => !item.name.includes('«0»'))} /></div>
+            <div className="drink-kind" id="soft-drinks"><div className="drink-kind-heading"><p>Чай, кофе, лимонады и другое</p><h3>Безалкогольные</h3></div>{group.titles.filter((title) => title !== 'ПИВО').map((title) => <MenuSectionBlock title={title} key={title} />)}<MenuSectionBlock title="ПИВО" displayTitle="БЕЗАЛКОГОЛЬНОЕ ПИВО" items={sections.get('ПИВО')?.items.filter((item) => item.name.includes('«0»'))} /></div>
+            <div className="drink-kind drink-kind-alcohol" id="alcohol-drinks"><div className="drink-kind-heading"><p>Барное меню</p><h3>Алкогольные</h3></div><MenuSectionBlock title="ПИВО" items={sections.get('ПИВО')?.items.filter((item) => !item.name.includes('«0»'))} /><MenuSectionBlock title="КОКТЕЙЛИ И ЛИМОНАДЫ (БАР)" items={barCocktails} /><p className="menu-source-note">Коктейли и лимонады перенесены сюда из <a href="https://retro-korolev.ru/menu/bar.html" target="_blank" rel="noreferrer">барного меню «Ретро» <ArrowUpRight size={15} /></a>. В опубликованном составе этих напитков алкоголь не указан — уточните варианты у бармена.</p></div>
           </> : group.titles.map((title) => <MenuSectionBlock title={title} key={title} />)}
         </div>
       </section>)}
