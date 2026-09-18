@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { ArrowDown, ArrowUp, ArrowUpRight, Clock3, MapPin, Menu, Phone, X } from 'lucide-react';
+import 'leaflet/dist/leaflet.css';
+import { RetroMap } from './RetroMap';
 import './styles.css';
 
 const base = import.meta.env.BASE_URL;
@@ -9,8 +11,6 @@ const phoneLabel = '+7 (999) 838-29-17';
 const mapsHref = 'https://yandex.ru/maps/org/retro/17968240150/?ll=37.863951%2C55.920845&z=15';
 const hoursSourceHref = 'https://tomesto.ru/moskva/places/retro';
 const deliveryHref = 'https://retro-korolev.ru/contact.html#delivery';
-const deliveryMapEmbed = 'https://yandex.ru/map-widget/v1/?um=constructor%3A0c94af0af1f059537d78aa021f16162bee1d90b2140e86045c6e7d6b5208646c&source=constructor';
-const locationMapEmbed = 'https://yandex.ru/map-widget/v1/?ll=37.863951%2C55.920845&z=17&pt=37.863951%2C55.920845%2Cpm2rdm';
 const menuHref = 'https://retro-korolev.ru/menu.html';
 const ourMenuHref = `${base}menu.html`;
 const gallery = [
@@ -23,27 +23,6 @@ const gallery = [
 
 function Hours() {
   return <div className="hours-list"><span><b>Пн</b><strong>16:00–01:00</strong></span><span><b>Вт–Чт, Вс</b><strong>14:00–03:00</strong></span><span><b>Пт–Сб</b><strong>14:00–06:00</strong></span></div>;
-}
-
-function EmbeddedMap({ src, mobileSrc, title, className, children }: { src: string; mobileSrc?: string; title: string; className: string; children?: React.ReactNode }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const element = containerRef.current;
-    if (!element) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setVisible(true);
-        observer.disconnect();
-      }
-    }, { threshold: 0.1 });
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
-  const mapSrc = mobileSrc && window.matchMedia('(max-width: 760px)').matches ? mobileSrc : src;
-  return <div ref={containerRef} className={className}>{visible ? <iframe title={title} src={mapSrc} referrerPolicy="strict-origin-when-cross-origin" /> : <span className="map-loading">Загрузка карты…</span>}{children}</div>;
 }
 
 function App() {
@@ -138,13 +117,13 @@ function App() {
           <p>Заказы принимают до 23:00. За пределами отмеченной зоны доставку рассчитывают по тарифам Яндекс Go — стоимость уточните по телефону.</p>
         </div>
       </div>
-      <div id="delivery-map" className="delivery-map-section"><div className="delivery-map-heading"><div><p className="section-kicker">Где привезём</p><h3>Зона доставки</h3><p>Зелёным выделена зона бесплатной доставки при заказе от 3 500 ₽. Проверьте свой адрес на карте перед заказом.</p></div><a href={deliveryHref} target="_blank" rel="noreferrer">Открыть карту крупнее <ArrowUpRight size={18} /></a></div><EmbeddedMap className="delivery-map-frame" title="Зона доставки кафе Ретро в Королёве" src={deliveryMapEmbed} mobileSrc={`${deliveryMapEmbed}&z=11.5`} /><p className="delivery-map-note">Карта и условия — с <a href={deliveryHref} target="_blank" rel="noreferrer">официального сайта кафе</a>. Для адресов за пределами зоны стоимость доставки уточняйте при заказе.</p></div>
+      <div id="delivery-map" className="delivery-map-section"><div className="delivery-map-heading"><div><p className="section-kicker">Где привезём</p><h3>Зона доставки</h3><p>Зелёным выделена зона бесплатной доставки при заказе от 3 500 ₽. Проверьте свой адрес на карте перед заказом.</p></div><a href={deliveryHref} target="_blank" rel="noreferrer">Открыть карту крупнее <ArrowUpRight size={18} /></a></div><div className="delivery-map-frame"><RetroMap showDeliveryZone /></div><p className="delivery-map-note">Граница зоны взята с <a href={deliveryHref} target="_blank" rel="noreferrer">официальной карты кафе</a>. Для адресов за пределами зоны стоимость доставки уточняйте при заказе.</p></div>
     </div></section>
 
     <section id="booking" className="booking-zone"><div className="booking-banner shell"><div><p className="section-kicker">Вечер начинается здесь</p><h2>Осталось выбрать <em>время</em></h2></div><div className="booking-actions"><a className="button button-primary" href={phoneHref}><Phone /> Позвонить и забронировать</a><a className="button button-outline-dark" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a></div></div></section>
 
     <section id="contacts" className="contacts section-pad"><div className="shell contacts-grid"><div className="contacts-copy"><p className="section-kicker">Контакты</p><h2>До встречи<br /><em>в Ретро</em></h2><div className="contact-lines"><a href={phoneHref}><span>Телефон и бронь</span><b>{phoneLabel}</b></a><div className="contact-hours-row"><span>Режим работы</span><Hours /><small>Расписание по открытым данным. Перед поздним визитом лучше позвонить. <a href={hoursSourceHref} target="_blank" rel="noreferrer">Источник <ArrowUpRight size={14} /></a></small></div><div><span>Адрес</span><b>Королёв, Полевой проезд, 4А</b></div></div><div className="contact-buttons"><a className="button button-primary" href={mapsHref} target="_blank" rel="noreferrer"><MapPin /> Построить маршрут</a><a className="button button-ghost" href={phoneHref}><Phone /> Позвонить</a></div></div>
-      <EmbeddedMap className="map-card" title="Кафе и бильярд Ретро на карте Королёва" src={locationMapEmbed}><a className="map-link" href={mapsHref} target="_blank" rel="noreferrer">Открыть в Яндекс Картах <ArrowUpRight /></a></EmbeddedMap>
+      <div className="map-card"><RetroMap /><a className="map-link" href={mapsHref} target="_blank" rel="noreferrer" aria-label="Открыть кафе Ретро в Яндекс Картах">Открыть в Яндекс Картах <ArrowUpRight /></a></div>
     </div></section>
 
     <footer className="footer shell"><a className="brand" href="#top"><span className="brand-mark">Р</span><span className="brand-copy"><b>Ретро</b><small>Кафе · Бильярд · Королёв</small></span></a><p>© {new Date().getFullYear()} Кафе и бильярд «Ретро»</p><a className="footer-phone" href={phoneHref}>{phoneLabel}</a><a className="back-to-top" href="#top"><ArrowUp /> Наверх</a></footer>
